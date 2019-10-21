@@ -4,6 +4,7 @@ div.welcome-page {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  transition: 1s;
 }
 .welcome-items {
   font-size: 80px;
@@ -15,6 +16,7 @@ div.welcome-page {
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-direction: normal;
+  transition: 1s;
 }
 @keyframes angry-animation {
   0% {
