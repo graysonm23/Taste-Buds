@@ -1,3 +1,4 @@
+/*---------------------------------Welcome page-------------------------------------*/
 div.welcome-page {
   background: black;
   display: flex;
@@ -47,3 +48,4 @@ div.welcome-page {
   color: #27ae60;
   transition: 0.8s;
 }
+/*---------------------------------Welcome page-------------------------------------
