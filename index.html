@@ -2,31 +2,32 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-  <!-- Bootstrap CDN Here -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Other Stuff -->
   <link href="https://fonts.googleapis.com/css?family=Courgette|Yellowtail&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <!-- Custom CSS overrides Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
-
-  <title>Taste Buds</title>
+  <title>Project 1</title>
 </head>
 
 <body>
-  <!------------------------------------ Welcome page ----------------------------------->
+  <!------------------------------------Welcome page----------------------------------->
   <div class="welcome-page">
     <h3 class="welcome-items">WELCOME TO TASTE BUDS</h3>
     <button id="openingBtn" class="button is-success">Head on in...</button>
   </div>
-  <!------------------------------------ Welcome page ----------------------------------->
+  <!------------------------------------Search Page----------------------------------->
+  <div hidden class="search-page" style="align-content: center;">
+    <!-- Input Form -->
+    <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
+      <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
+        autocomplete="off">
+    </form>
+    <button id="searchBtn" class="button is-success">Check it out</button>
+
+  </div>
 
   <!------------------------------------ How-To Video ----------------------------------->
   <div class="card" id="howToContainer">
@@ -60,6 +61,13 @@
     crossorigin="anonymous"></script>
   <!-- Logic JavaScript link here -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
