@@ -1,6 +1,7 @@
 /*---------------------------------Welcome page-------------------------------------*/
 div.welcome-page,
-div.search-page {
+div.search-page,
+div.buttonHolder {
   background: black;
   display: flex;
   align-items: center;
@@ -53,8 +54,3 @@ input {
   transition: 0.8s;
 }
 /*---------------------------------Welcome page------------------------------------- */
-  
-#searchBtn{
-    align-items: center;
-    justify-content: center;
-  }

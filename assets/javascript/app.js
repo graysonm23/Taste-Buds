@@ -1,13 +1,14 @@
 //--------------------------------Welcome page------------------------------------
 let welcomePage = $(".welcome-page");
 
-$(searchPage).hide();
+// Hide search button on page load
 $('#searchBtn').hide();
 
 $("#openingBtn").on("click", function () {
   $(welcomePage).hide();
   $(searchPage).show();
-  $('#searchBtn').show();
+  $("#searchBtn").show();
+
 });
 //--------------------------------Welcome page------------------------------------
 
