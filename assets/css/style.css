@@ -35,7 +35,7 @@ div.welcome-page {
 #openingBtn {
   display: block;
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   background-color: #27ae60;
   cursor: pointer;
   transition: 0.8s;
