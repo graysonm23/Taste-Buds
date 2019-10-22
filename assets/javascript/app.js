@@ -8,7 +8,6 @@ $("#openingBtn").on("click", function () {
   $(welcomePage).hide();
   $(searchPage).show();
   $('#searchBtn').show();
-  $('input')[0].reset();
 });
 //--------------------------------Welcome page------------------------------------
 
