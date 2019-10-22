@@ -2,7 +2,7 @@
 let welcomePage = $(".welcome-page");
 $("#openingBtn").on("click", function () {
   $(welcomePage).hide();
-  $("#search-Page").show();
+  $(".search-page").show();
   $("#searchBtn").show();
 
 });
