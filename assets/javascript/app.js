@@ -1,5 +1,10 @@
 //--------------------------------Welcome page------------------------------------//
 let welcomePage = $(".welcome-page");
+var searchPage = $(".search-page")
+
+$('#searchBtn').hide();
+
+
 $("#openingBtn").on("click", function () {
   $(welcomePage).hide();
   $(searchPage).show();
