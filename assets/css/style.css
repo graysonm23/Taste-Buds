@@ -1,16 +1,66 @@
 /*---------------------------------Welcome page-------------------------------------*/
+#imageWP {
+  background-image: url(https://cdn.pixabay.com/photo/2017/08/05/21/34/chef-2585791_1280.jpg);
+  -webkit-animation: kenburns-top 30s ease-in alternate-reverse backwards;
+  animation: kenburns-top 30s ease-in alternate-reverse backwards;
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 div.welcome-page {
-  background: black;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   transition: 1s;
 }
+
+
+/**
+ * ----------------------------------------
+ * Welcome Page Backround animation
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateX(0);
+            transform: scale(1) translateX(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(-15px);
+            transform: scale(1) translateX(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+@keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateX(0);
+            transform: scale(1) translateX(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateX(-15px);
+            transform: scale(1.25) translateX(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+
 .welcome-items {
   font-size: 80px;
   font-family: "Yellowtail", cursive;
   color: white;
+  mix-blend-mode: difference;
   animation-name: angry-animation;
   animation-duration: 3s;
   animation-timing-function: ease;
@@ -18,6 +68,7 @@ div.welcome-page {
   animation-iteration-count: 1;
   animation-direction: normal;
   transition: 1s;
+  animation-fill-mode: forwards
 }
 @keyframes angry-animation {
   0% {
@@ -30,6 +81,7 @@ div.welcome-page {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
+  
 }
 
 #openingBtn {
