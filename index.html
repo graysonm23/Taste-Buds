@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    
     <!-- Bootstrap CDN Here -->
     <link
       rel="stylesheet"
@@ -13,6 +13,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    
     <!-- Welcome Page Font, Font Awesome Icons, and Bulma CSS Framework -->
     <link
       href="https://fonts.googleapis.com/css?family=Courgette|Yellowtail&display=swap"
@@ -26,6 +27,7 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
+    
     <!-- Custom CSS overrides Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -40,6 +42,39 @@
       <button id="openingBtn" class="button is-success">Head on in...</button>
     </div>
     <!------------------------------------ Welcome page ----------------------------------->
+
+  <!------------------------------------Search Page------------------------------------>
+  <div hidden class="search-page" style="align-content: center;">
+    <!-- Input Form -->
+    <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
+      <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
+        autocomplete="off">
+    </form>
+    <button id="searchBtn" class="button is-success">Check it out</button>
+
+  </div>
+  <!------------------------------------- Search Page ----------------------------------->
+
+
+  <!------------------------------------ How-To Video ----------------------------------->
+  <div class="card" id="howToContainer">
+    <div class="card-body">
+      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        How-To Cook Video!
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body" id="videoContainer">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
+          keffiyeh
+          helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!------------------------------------ How-To Video ----------------------------------->
 
     <!-- jQuery CDN goes Here -->
     <script
