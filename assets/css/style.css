@@ -1,5 +1,7 @@
 /*---------------------------------Welcome page-------------------------------------*/
-div.welcome-page {
+div.welcome-page,
+div.search-page,
+div.buttonHolder {
   background: black;
   display: flex;
   align-items: center;
@@ -7,7 +9,8 @@ div.welcome-page {
   height: 100vh;
   transition: 1s;
 }
-.welcome-items {
+.welcome-items,
+input {
   font-size: 80px;
   font-family: "Yellowtail", cursive;
   color: white;
@@ -32,7 +35,8 @@ div.welcome-page {
   }
 }
 
-#openingBtn {
+#openingBtn,
+#searchBtn {
   display: block;
   position: absolute;
   bottom: 20%;
@@ -42,10 +46,11 @@ div.welcome-page {
   overflow: hidden;
 }
 
-#openingBtn:hover {
+#openingBtn:hover,
+#searchBtn:hover {
   color: #27ae60;
   background: white;
   color: #27ae60;
   transition: 0.8s;
 }
-/*---------------------------------Welcome page-------------------------------------
+/*---------------------------------Welcome page------------------------------------- */
