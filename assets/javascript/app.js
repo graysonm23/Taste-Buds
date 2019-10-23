@@ -22,9 +22,16 @@ $("#openingBtn").on("click", function () {
   $("#howToContainer").show();
 });
 
-var youTubeApi = AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU;
-var youTubeUrl = "https://www.googleapis.com/youtube/v3/videos"
+var userFoodSearch = "how to cook chicken marsala";
+var youTubeApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
+var youTubeUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=rating&q=" + userFoodSearch + "&regionCode=us&relevanceLanguage=en&safeSearch=strict&type=video&videoCaption=any&videoDefinition=any&videoDimension=2d&videoDuration=any&videoEmbeddable=true&videoLicense=youtube&videoSyndicated=true&videoType=any&key=" + youTubeApi;
 
 
+$.ajax({
+  url: youTubeUrl,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+}
 
 //--------------------------------How-To Video------------------------------------//
