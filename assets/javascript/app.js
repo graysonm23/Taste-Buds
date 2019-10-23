@@ -1,6 +1,9 @@
 //--------------------------------Welcome page------------------------------------
-let welcomePage = $(".welcome-page");
-$("#openingBtn").on("click", function() {
-  $(welcomePage).hide();
+let openingPage = $("#openingPage");
+let openingBtn = $("#openingBtn");
+
+$(openingBtn).on("click", function() {
+  $(openingPage).addClass("fadeOut");
+  $(openingBtn).attr("disabled", "disabled");
 });
 //--------------------------------Welcome page------------------------------------

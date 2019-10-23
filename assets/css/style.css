@@ -20,6 +20,9 @@ div.welcome-page {
   transition: 1s;
 }
 
+#openingPage {
+  transition: 1s ease;
+}
 
 /**
  * ----------------------------------------
@@ -99,5 +102,15 @@ div.welcome-page {
   background: white;
   color: #27ae60;
   transition: 0.8s;
+}
+
+div.fadeIn {
+  opacity: 1;
+  pointer-events: all;
+}
+
+div.fadeOut {
+  opacity: 0;
+  pointer-events: none;
 }
 /*---------------------------------Welcome page-------------------------------------
