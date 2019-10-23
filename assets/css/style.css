@@ -114,7 +114,7 @@ div.welcome-page {
 } */
 /*----------------------------------------------Welcome Page-------------------------------------------------------*/
 /*--------------------------------- Search page -----------------------------------*/
-/* div.search-page {
+div.search-page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +149,7 @@ div.welcome-page {
   background: white;
   color: #27ae60;
   transition: 0.8s;
-} */
+}
 /*--------------------------------- Search page -----------------------------------*/
 /*--------------------------------- How-To Video ----------------------------------*/
 #howToContainer {
