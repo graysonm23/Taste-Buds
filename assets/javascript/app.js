@@ -3,7 +3,8 @@ let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
 $(openingBtn).on("click", function() {
-  $(openingPage).addClass("fadeOut");
+  $(openingPage).hide();
+  // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
 });
 //--------------------------------Welcome page------------------------------------//
@@ -12,10 +13,10 @@ $(openingBtn).on("click", function() {
 var searchPage = $(".search-page");
 var searchBtn = $("#searchBtn");
 
-$("#searchBtn").hide();
+$(searchBtn).hide();
 $(searchPage).hide();
 
-$("#openingBtn").on("click", function() {
+$(openingBtn).on("click", function() {
   $(searchPage).show();
   $(searchBtn).show();
 });

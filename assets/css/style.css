@@ -102,9 +102,19 @@ div.welcome-page {
   color: #27ae60;
   transition: 0.8s;
 }
+
+/* .fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fadeIn {
+  opacity: 1;
+  pointer-events: all;
+} */
 /*----------------------------------------------Welcome Page-------------------------------------------------------*/
 /*--------------------------------- Search page -----------------------------------*/
-div.search-page {
+/* div.search-page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +149,7 @@ div.search-page {
   background: white;
   color: #27ae60;
   transition: 0.8s;
-}
+} */
 /*--------------------------------- Search page -----------------------------------*/
 /*--------------------------------- How-To Video ----------------------------------*/
 #howToContainer {
