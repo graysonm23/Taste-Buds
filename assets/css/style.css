@@ -33,29 +33,29 @@ div.welcome-page {
 @-webkit-keyframes kenburns-top {
   0% {
     -webkit-transform: scale(1) translateX(0);
-            transform: scale(1) translateX(0);
+    transform: scale(1) translateX(0);
     -webkit-transform-origin: 50% 16%;
-            transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
   }
   100% {
     -webkit-transform: scale(1) translateX(-15px);
-            transform: scale(1) translateX(-15px);
+    transform: scale(1) translateX(-15px);
     -webkit-transform-origin: top;
-            transform-origin: top;
+    transform-origin: top;
   }
 }
 @keyframes kenburns-top {
   0% {
     -webkit-transform: scale(1) translateX(0);
-            transform: scale(1) translateX(0);
+    transform: scale(1) translateX(0);
     -webkit-transform-origin: 50% 16%;
-            transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
   }
   100% {
     -webkit-transform: scale(1.25) translateX(-15px);
-            transform: scale(1.25) translateX(-15px);
+    transform: scale(1.25) translateX(-15px);
     -webkit-transform-origin: top;
-            transform-origin: top;
+    transform-origin: top;
   }
 }
 
@@ -71,7 +71,7 @@ div.welcome-page {
   animation-iteration-count: 1;
   animation-direction: normal;
   transition: 1s;
-  animation-fill-mode: forwards
+  animation-fill-mode: forwards;
 }
 @keyframes angry-animation {
   0% {
@@ -84,7 +84,6 @@ div.welcome-page {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
-  
 }
 
 #openingBtn {
@@ -103,4 +102,47 @@ div.welcome-page {
   color: #27ae60;
   transition: 0.8s;
 }
-
+/*----------------------------------------------Welcome Page-------------------------------------------------------*/
+/*--------------------------------- Search page -----------------------------------*/
+div.search-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: 1s;
+  z-index: 150%;
+}
+.search-page {
+  font-size: 80px;
+  font-family: "Yellowtail", cursive;
+  color: white;
+  animation-name: angry-animation;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  transition: 1s;
+  animation-fill-mode: forwards;
+}
+#searchBtn {
+  display: block;
+  position: absolute;
+  bottom: 10%;
+  background-color: #27ae60;
+  cursor: pointer;
+  transition: 0.8s;
+  overflow: hidden;
+}
+#searchBtn:hover {
+  color: #27ae60;
+  background: white;
+  color: #27ae60;
+  transition: 0.8s;
+}
+/*--------------------------------- Search page -----------------------------------*/
+/*--------------------------------- How-To Video ----------------------------------*/
+#howToContainer {
+  display: none;
+}
+/*--------------------------------- How-To Video ----------------------------------*/
