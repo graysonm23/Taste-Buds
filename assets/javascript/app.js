@@ -28,6 +28,7 @@ $(openingBtn).on("click", function () {
 
 $("#searchBtn").on("click", function () {
   $("#howToContainer").show();
+  $("#recipeList").show();
 });
 
 var userFoodSearch = "how to cook chicken marsala";
@@ -91,14 +92,15 @@ function stopVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function () {
-  //This line will show the recipelist div from html
-  $("#recipeList").show();
-});
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
 
 //displayRecipe();
 function displayRecipe() {
-  var dish = "chicken";
+  var dish = $("#search-input");
+  //var dish = "chicken";
 
   var queryURL =
     "https://api.edamam.com/search?q=" +
@@ -115,10 +117,16 @@ function displayRecipe() {
     var results = response.hits;
     console.log("hits: recipe : " + results[0].recipe.image);
     console.log("hits: recipe : " + results[0].recipe.url);
+
+    for (var i = 0; i < results.length; i++) {
+      var foodResult = $("<div>");
+      $(foodResult).attr("data-dish", response.q);
+      var p = $("<p>").text("Recipe: " + results[i].recipe.url);
+      var foodImage = $("<img>").attr("src", results[i].recipe.image);
+      console.log("inside loop -  : " + results[0].recipe.url);
+
+    }//end of for loop
   });
 }
 
-$("#searchBtn").on("click", function () {
-  console.log(working);
-});
 //-------------------------------- Recipes ------------------------------------//
