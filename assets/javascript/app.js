@@ -1,29 +1,23 @@
+//--------------------------------Welcome page------------------------------------
+let openingPage = $("#openingPage");
+let openingBtn = $("#openingBtn");
+
+$(openingBtn).on("click", function() {
+  $(openingPage).addClass("fadeOut");
+  $(openingBtn).attr("disabled", "disabled");
+});
 //--------------------------------Welcome page------------------------------------//
-let welcomePage = $(".welcome-page");
+
+//--------------------------------Search page------------------------------------//
+var searchPage = $(".search-page");
+var searchBtn = $("#searchBtn");
 
 $('#searchBtn').hide();
-//added - Hibah 
-$("#recipeList").hide();
-
+$(searchPage).hide();
 
 $("#openingBtn").on("click", function () {
-  $(welcomePage).hide();
   $(searchPage).show();
-  $("#searchBtn").show();
-
-});
-//--------------------------------Welcome page------------------------------------//
-
-//--------------------------------Search page------------------------------------//
-var searchPage = $(".search-page")
-
-$('#searchBtn').hide();
-
-
-$("#openingBtn").on("click", function () {
-  $(welcomePage).hide();
-  $(".search-page").show();
-  $("#searchBtn").show();
+  $(searchBtn).show();
 
 });
 
@@ -31,27 +25,6 @@ $("#openingBtn").on("click", function () {
 
 //--------------------------------Search page------------------------------------//
 
-
-//--------------------------------How-To Video------------------------------------//
-
-/*This on click event will handle when the video card will show, for now it is
-set to openingBtn user click*/
-<<<<<<< HEAD
-$("#searchBtn").on("click", function () {
-  //This line will show the howToContainer from html
-  $("#howToContainer").show();
-});
-=======
-// $("#openingBtn").on("click", function () {
-//   //This line will show the howToContainer from html
-//   $("#howToContainer").show();
-// });
-
-// var youTubeApi = AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU;
-// var youTubeUrl = "https://www.googleapis.com/youtube/v3/videos"
-
-
->>>>>>> 9cea35d7981978508047a3716a36424425fa2cb0
 
 var userFoodSearch = "how to cook chicken marsala";
 var youTubeApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
@@ -61,7 +34,6 @@ $.ajax({
   method: "GET"
 }).then(function (response) {
   console.log(response);
-<<<<<<< HEAD
 });
 
 //This is for the embedded video
@@ -107,9 +79,6 @@ function stopVideo() {
   player.stopVideo();
 }
 //--------------------------------How-To Video------------------------------------//
-=======
-})
-//--------------------------------How-To Video------------------------------------//
 //need to add  $("#recipeList").hide(); in line 12 
 $("#openingBtn").on("click", function () {
   //This line will show the recipelist div from html
@@ -143,4 +112,3 @@ $("#searchBtn").on("click", function () {
 
 });
 
->>>>>>> 9cea35d7981978508047a3716a36424425fa2cb0
