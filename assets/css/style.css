@@ -104,13 +104,3 @@ div.welcome-page {
   transition: 0.8s;
 }
 
-div.fadeIn {
-  opacity: 1;
-  pointer-events: all;
-}
-
-div.fadeOut {
-  opacity: 0;
-  pointer-events: none;
-}
-/*---------------------------------Welcome page-------------------------------------

@@ -39,28 +39,51 @@
       <div class="welcome-page">
         <h3 class="welcome-items">Welcome To Taste-Buds</h3>
         <button id="openingBtn" class="button is-success">Head on in...</button>
+    </div
+  <!------------------------------------ Welcome page ----------------------------------->
+
+  <!------------------------------------ Search Page ------------------------------------>
+
+  <div class="search-page" style="align-content: center;">
+    <!-- Input Form -->
+    <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
+      <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
+        autocomplete="off">
+    </form>
+    <button id="searchBtn" class="button is-success">Check it out</button>
+
+  </div>
+  <!------------------------------------Search Page----------------------------------->
+
+  <!------------------------------------ How-To Video ----------------------------------->
+  <div class="card" id="howToContainer">
+    <div class="card-body">
+      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        How-To Cook Video!
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body" id="videoContainer">
+          <div id="player"></div>
+        </div>
       </div>
     </div>
-    <!------------------------------------ Welcome page ----------------------------------->
+  </div>
 
-    <!-- jQuery CDN goes Here -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <!-- Bootstrap required plugins -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Logic JavaScript link here -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-  </body>
+
+  <!------------------------------------ How-To Video ----------------------------------->
+  <!-- jQuery CDN goes Here -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- Bootstrap required plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- Logic JavaScript link here -->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+
 </html>
