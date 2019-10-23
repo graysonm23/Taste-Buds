@@ -2,7 +2,7 @@
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
@@ -16,12 +16,19 @@ var searchBtn = $("#searchBtn");
 $(searchBtn).hide();
 $(searchPage).hide();
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(searchPage).show();
   $(searchBtn).show();
 });
 
 //--------------------------------Search page------------------------------------//
+
+
+//--------------------------------How-To Video------------------------------------//
+
+$("#searchBtn").on("click", function () {
+  $("#howToContainer").show();
+});
 
 var userFoodSearch = "how to cook chicken marsala";
 var youTubeApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
@@ -33,7 +40,7 @@ var youTubeUrl =
 $.ajax({
   url: youTubeUrl,
   method: "GET"
-}).then(function(response) {
+}).then(function (response) {
   console.log(response);
 });
 
@@ -80,8 +87,11 @@ function stopVideo() {
   player.stopVideo();
 }
 //--------------------------------How-To Video------------------------------------//
+
+//-------------------------------- Recipes ---------------------------------------//
+
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function() {
+$("#openingBtn").on("click", function () {
   //This line will show the recipelist div from html
   $("#recipeList").show();
 });
@@ -98,7 +108,7 @@ function displayRecipe() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     //console.log(queryURL);
     // storing the data from the AJAX request in the results variable
@@ -108,7 +118,7 @@ function displayRecipe() {
   });
 }
 
-$("#searchBtn").on("click", function() {
+$("#searchBtn").on("click", function () {
   console.log(working);
 });
-//--------------------------------How-To Video------------------------------------//
+//-------------------------------- Recipes ------------------------------------//
