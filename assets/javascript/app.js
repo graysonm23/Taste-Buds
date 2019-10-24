@@ -38,7 +38,7 @@ $("#searchBtn").on("click", function (event) {
   //This line will empty the textbox so user doesn't need to delete contents after every submission
   $("#search-input").val("");
   //This line will clear the container holding the youTube video when user searches for a new food item
-  $("#player").empty();
+  $("#collapseExample").empty();
   //This local variable holds the google api key used for requesting youtube data
   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
   //This line will call the displayYouTubeVideo function to display video searched
@@ -54,16 +54,20 @@ $("#searchBtn").on("click", function (event) {
     url: youTubeUrl,
     method: "GET"
   }).then(function (response) {
-    videoIdSearch = [];
-    videoIdSearch.push(response.items[0].id.videoId);
-    //This is for the embedded youTube video
-    //This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement("script");
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+    //This line makes a variable to place the iframe div inside (this holds the youtube video)
+    youTubeVideo = $("<div>");
+    //This line will give div a class for bootstrap and an id for custom css use
+    youTubeVideo.addClass("card card-body").attr("id", "videoContainer");
+    //This line will place the div inside the collapsible container
+    $("#collapseExample").append(youTubeVideo);
+    //This line will place the user search videoId with the most relevance inside cookVideo variable
+    cookVideo = "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
+    //This line will make the iframe that holds the source video with the attributes for the video player
+    cookVideoContainer = $("<iframe>").attr("src", cookVideo).attr("allowFullscreen", "true").attr("frameBorder", "0").attr("width", "560").attr("height", "315").attr("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+    //This line will place the video inside the youTubeVideo container that holds the iframe
+    youTubeVideo.append(cookVideoContainer);
+    //Test
+    console.log(cookVideoContainer);
 
   });
 
@@ -78,42 +82,6 @@ function displayYouTubeVideo() {
   //This line displays recipe container
   $("#recipeList").show();
 }
-
-//The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-//The API calls this function when the player's state changes.
-//The function indicates that when playing a video (state=1),
-//the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    // setTimeout(stopVideo, 6000);
-    done = true;
-  }
-}
-function stopVideo() {
-  player.stopVideo();
-}
-
-//This function creates an <iframe> (and YouTube player)
-//after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player("player", {
-    height: "390",
-    width: "640",
-    //This id was temporarily plugged in from the response
-    videoId: videoIdSearch,
-    events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange
-    }
-  });
-}
-
 
 //--------------------------------How-To Video------------------------------------//
 
