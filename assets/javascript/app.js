@@ -23,7 +23,7 @@ $(openingBtn).on("click", function () {
 
 //--------------------------------Search page------------------------------------//
 
-//--------------------------------How-To Video------------------------------------//
+//--------------------------------How-To Video (Emir)------------------------------------//
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (event) {
@@ -45,7 +45,7 @@ $("#searchBtn").on("click", function (event) {
   displayYouTubeVideo();
   //This local variable holds the queryUrl used from youTube along with search parameters
   var youTubeUrl =
-    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=relevance&q=how+to+make+" +
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=how+to+make+" +
     userFoodSearch +
     "&regionCode=us&relevanceLanguage=en&safeSearch=strict&type=video&videoCaption=any&videoDefinition=any&videoDimension=2d&videoDuration=any&videoEmbeddable=true&videoLicense=youtube&videoSyndicated=true&videoType=any&key=" +
     googleApi;
@@ -83,7 +83,7 @@ function displayYouTubeVideo() {
   $("#recipeList").show();
 }
 
-//--------------------------------How-To Video------------------------------------//
+//--------------------------------How-To Video (Emir)------------------------------------//
 
 //-------------------------------- Recipes ---------------------------------------//
 
