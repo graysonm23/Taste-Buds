@@ -39,8 +39,8 @@
     <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
       <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
         autocomplete="off" />
+      <button class="button is-success" type="submit" id="searchBtn">Check it out</button>
     </form>
-    <button id="searchBtn" class="button is-success">Check it out</button>
   </div>
   <!------------------------------------Search Page----------------------------------->
   ​
@@ -48,9 +48,7 @@
   <div class="card" id="howToContainer">
     <div class="card-body">
       <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample">
-        How-To Cook Video!
-      </button>
+        aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
       <div class="collapse" id="collapseExample">
         <div class="card card-body" id="videoContainer">
           <div id="player"></div>
