@@ -25,6 +25,9 @@ $(openingBtn).on("click", function () {
 
 //--------------------------------How-To Video (Emir)------------------------------------//
 
+//This line hides the container holding the youtube video
+$("#howToContainer").hide();
+
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
