@@ -88,20 +88,24 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function () {
-  //This line will show the recipelist div from html
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
+
+
+$("#searchBtn").on("click", function () {
+  //var dish = $("#search-input");
   $("#recipeList").show();
+  displayRecipe();
 });
 
-//displayRecipe();
 function displayRecipe() {
-  var dish = $("#search-input");
+
+  var dish = $("#search-input").val().trim();
   //var dish = "chicken";
 
-  var queryURL =
-    "https://api.edamam.com/search?q=" +
-    dish +
-    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=10&calories=0-1000000";
+  var queryURL = "https://api.edamam.com/search?q=" + dish + "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
 
   $.ajax({
     url: queryURL,
@@ -111,20 +115,47 @@ function displayRecipe() {
     //console.log(queryURL);
     // storing the data from the AJAX request in the results variable
     var results = response.hits;
-    console.log("hits: recipe : " + results[0].recipe.image);
-    console.log("hits: recipe : " + results[0].recipe.url);
+    console.log("hits: image : " + results[0].recipe.image);
+    console.log("hits: URL: " + results[0].recipe.url);
+    console.log("hits: serach name : " + response.q);
 
     for (var i = 0; i < results.length; i++) {
       var foodResult = $("<div>");
       $(foodResult).attr("data-dish", response.q);
-      var p = $("<p>").text("Recipe: " + results[i].recipe.url);
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
-      console.log("inside loop -  : " + results[0].recipe.url);
-    } //end of for loop
-  });
-}
 
-$("#searchBtn").on("click", function () {
-  // console.log(working);
-});
-//-------------------------------- Recipes ------------------------------------//
+      var row = $("<tr>");
+      row.append(foodImage);
+      row.append("<td>" + results[i].recipe.label + "</td>");
+      row.append("<td>" + results[i].recipe.url + "</td>");
+      row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
+      row.append("<ul id=groceryList" + i + "> </ul>")
+      //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
+      $("#recipes").append(row);
+      //for loop for ingredients 
+
+      // var ingr = results[i].recipe.ingredientLines.length;
+      // console.log("Testiiiiing :" + ingr);
+      for (var j = 0; j < results[i].recipe.ingredientLines.length; j++) {
+
+        var li = $("<li list-style-type:square>");
+        li.text(results[i].recipe.ingredientLines[j]);
+        $("#groceryList" + i).append(li);
+
+        // var ingrList = ("<li>" + results[i].recipe.ingredientLines[j] + "</li>");
+
+        //row.append(ul);
+      }
+      // $("#groceryList").append(ingrList);
+      // var ul = $("<ul>");
+      // row.append(ul);
+      // ul.append(ingrList);
+      // row.append(ul);
+
+      //var recipeURL = $("<p>").text("Recipe: " + results[i].recipe.url);
+
+
+    }//end of for loop
+  });
+
+}
