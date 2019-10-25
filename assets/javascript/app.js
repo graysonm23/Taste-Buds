@@ -29,6 +29,10 @@ $(openingBtn).on("click", function () {
 $("#searchBtn").on("click", function (event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
+  //Calls the recipe API to show the recipe list 
+  displayRecipe();
+  //shows the ID for the recipe list 
+  $("#recipeList").show()
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
@@ -66,9 +70,6 @@ $("#searchBtn").on("click", function (event) {
     cookVideoContainer = $("<iframe>").attr("src", cookVideo).attr("allowFullscreen", "true").attr("frameBorder", "0").attr("width", "560").attr("height", "315").attr("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-    //Test
-    console.log(cookVideoContainer);
-
   });
 
 });
@@ -93,12 +94,6 @@ function displayYouTubeVideo() {
 //   $("#recipeList").show();
 // });
 
-
-$("#searchBtn").on("click", function () {
-  //var dish = $("#search-input");
-  $("#recipeList").show();
-  displayRecipe();
-});
 
 function displayRecipe() {
 
@@ -142,17 +137,8 @@ function displayRecipe() {
         li.text(results[i].recipe.ingredientLines[j]);
         $("#groceryList" + i).append(li);
 
-        // var ingrList = ("<li>" + results[i].recipe.ingredientLines[j] + "</li>");
-
-        //row.append(ul);
       }
-      // $("#groceryList").append(ingrList);
-      // var ul = $("<ul>");
-      // row.append(ul);
-      // ul.append(ingrList);
-      // row.append(ul);
 
-      //var recipeURL = $("<p>").text("Recipe: " + results[i].recipe.url);
 
 
     }//end of for loop
