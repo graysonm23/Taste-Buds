@@ -30,96 +30,103 @@
       <button id="openingBtn" class="button is-success">Head on in...</button>
     </div>
   </div>
+  </div>
   <!------------------------------ Welcome page ----------------------------------->
   ​
   <!------------------------------------ Search Page ------------------------------------>
   ​
   <div class="search-page" style="align-content: center;">
     <!-- Input Form -->
-    <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
-      <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
-        autocomplete="off" />
+    <div class="search-page">
+      <!-- Input Form -->
+      <form class="text-center" id="search-form">
+        <input type="text" id="search-input" placeholder="What will it be today?" autocomplete="on" />
 
-      <!-- Calories input Hibah -->
+        <!-- Calories input Hibah -->
 
-      <div class="form-group row">
-        <label for="example-number-input" class="col-2 col-form-label">Max Calories</label>
-        <div class="col-10">
-          <input class="form-control" type="number" id="calorie-input">
+        <div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">Max Calories</label>
+          <div class="col-10">
+            <input class="form-control" type="number" id="calorie-input">
+          </div>
         </div>
-      </div>
 
-      <!-- Calories input -->
-      <!-- Multiselect Drop down Hibah-->
-      <section id="dropDown">
+        <!-- End of Calories input -->
+        <!-- Start Multiselect Drop down Hibah-->
+        <section id="dropDown">
 
 
-        <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
-          searchable="Search here..">
-          <option value="" disabled selected> Select Healthy Labels (Optional) </option>
-          <option value="alcohol-free">alcohol-free</option>
-          <option value="crustacean-free">crustacean-free</option>
-          <option value="dairy-free">dairy-free</option>
-          <option value="egg-free">egg-free</option>
-          <option value="keto">keto</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="tree-nut-free">Tree-Nut-free</option>
-        </select>
-        <label class="mdb-main-label">Label example</label>
+          <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
+            searchable="Search here..">
+            <option value="" disabled selected> Select Healthy Labels (Optional) </option>
+            <option value="alcohol-free">alcohol-free</option>
+            <option value="crustacean-free">crustacean-free</option>
+            <option value="dairy-free">dairy-free</option>
+            <option value="egg-free">egg-free</option>
+            <option value="keto">keto</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="tree-nut-free">Tree-Nut-free</option>
+          </select>
+          <label class="mdb-main-label">Label example</label>
 
-      </section>
-      <!-- Multiselect Drop down -->
+        </section>
+        <!--  End Multiselect Drop down -->
 
-      <button class="button is-success" type="submit" id="searchBtn">Check it out</button>
-    </form>
-  </div>
-  <!------------------------------------Search Page----------------------------------->
-  ​
-  <!------------------------------------ How-To Video ----------------------------------->
-  <div class="card" id="howToContainer">
-    <div class="card-body">
-      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
-      <div class="collapse" id="collapseExample"></div>
+        <button class="button is-success" type="submit" id="searchBtn">
+          Check it out
+        </button>
+      </form>
     </div>
-  </div>
-  ​
-  <!------------------------------------ How-To Video ----------------------------------->
 
-  <!--------------------------------------Recipe List ---------------------------------->
-  <div class="card" id="recipeList">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Title</th>
-          <th scope="col">Recipe</th>
-          <th scope="col">Calories</th>
-          <th scope="col">Serving</th>
-          <th scope="col">Ingredients</th>
-          <th scope="col">Calories Per Serving</th>
-          <th scope="col">Health Labels</th>
-        </tr>
-      </thead>
-      <tbody id="recipes">
-      </tbody>
-    </table>
+    <!------------------------------------Search Page----------------------------------->
+    ​
+    <!------------------------------------ How-To Video ----------------------------------->
+    <div class="card" id="howToContainer">
+      <div class="card-body">
+        <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
+        <div class="collapse" id="collapseExample"></div>
+      </div>
+    </div>
+    ​
+    <!------------------------------------ How-To Video ----------------------------------->
 
-  </div>
+    <!--------------------------------------Recipe List ---------------------------------->
+    <div class="card" id="recipeList">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Recipe</th>
+            <th scope="col">Calories</th>
+            <th scope="col">Serving</th>
+            <th scope="col">Ingredients</th>
+            <th scope="col">Calories Per Serving</th>
+            <th scope="col">Health Labels</th>
+          </tr>
+        </thead>
+        <tbody id="recipes">
+        </tbody>
+      </table>
+
+    </div>
+
+    <!--------------------------------------End of Recipe List ---------------------------------->
 
 
-  <!-- jQuery CDN goes Here -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <!-- Bootstrap required plugins -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <!-- Logic JavaScript link here -->
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- jQuery CDN goes Here -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap required plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <!-- Logic JavaScript link here -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>

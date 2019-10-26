@@ -16,7 +16,7 @@ div.welcome-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
   transition: 1s;
 }
 
@@ -113,24 +113,34 @@ div.welcome-page {
   pointer-events: all;
 } */
 /*----------------------------------------------Welcome Page-------------------------------------------------------*/
-/*--------------------------------- Search page -----------------------------------*/
-/* Graysons change*/
-/*--------------------------------- Search page -----------------------------------*/
 
 /*--------------------------------- Search page -----------------------------------*/
 div.search-page {
+  background-image: url(https://images.pexels.com/photos/1030865/pexels-photo-1030865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  transition: 1s;
-  z-index: 150%;
+  flex-direction: column;
 }
-/* Hibah COmmented it out since it was breaking the input form */
-/* .search-page {
-  font-size: 80px;
-  font-family: "Yellowtail", cursive;
+
+#search-input {
   color: white;
+  max-height: 60%;
+  max-width: 100%;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  font-size: 80px;
+  padding: 50px;
+  text-indent: 20px;
+  overflow-x: auto;
+  font-family: "Yellowtail", cursive;
   animation-name: angry-animation;
   animation-duration: 3s;
   animation-timing-function: ease;
@@ -139,11 +149,34 @@ div.search-page {
   animation-direction: normal;
   transition: 1s;
   animation-fill-mode: forwards;
-} */
+}
+
+#search-input:focus {
+  outline: none;
+}
+
+.searchBar-move {
+  /* display: block; */
+  position: absolute;
+  animation: 1s;
+  height: 10%;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.searchBtn-move {
+  position: relative;
+  display: inline-block;
+  top: 20%;
+}
+
 #searchBtn {
   display: block;
   position: absolute;
   bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #27ae60;
   cursor: pointer;
   transition: 0.8s;
@@ -173,3 +206,45 @@ div.search-page {
   width:10%; 
 }
 /*--------------------------------- Recipe List  ----------------------------------*/
+
+@media screen and (max-width: 882px) {
+  #search-input {
+    font-size: 70px;
+  }
+}
+
+@media screen and (max-width: 743px) {
+  #search-input {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 653px) {
+  #search-input {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #search-input {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #search-input {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  #search-input {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  #search-input {
+    font-size: 30px;
+  }
+}

@@ -1,6 +1,9 @@
 //--------------------------------Welcome page------------------------------------
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
+let modal = $("#myModal");
+
+$(modal).hide();
 
 $(openingBtn).on("click", function () {
   $(openingPage).hide();
@@ -30,6 +33,10 @@ $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (event) {
+  //grayson's change----testing
+  $("#search-input").addClass("searchBar-move");
+  $("#searchBtn").addClass("searchBtn-move");
+
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
   resetRecipe();
@@ -88,8 +95,6 @@ $("#searchBtn").on("click", function (event) {
       );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-    //Test
-    console.log(cookVideoContainer);
   });
 });
 
@@ -135,7 +140,7 @@ function displayRecipe() {
   var parameter = "";
   for (a = 0; a < optionSelected.length; a++) {
     parameter += "&health=" + optionSelected[a];
-    console.log("inside loop :" + parameter);
+    console.log("inside loop for health parameter :" + parameter);
   }
 
 
