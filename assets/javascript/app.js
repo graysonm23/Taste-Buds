@@ -128,3 +128,57 @@ $("#searchBtn").on("click", function () {
   // console.log(working);
 });
 //-------------------------------- Recipes ------------------------------------//
+
+
+//-------------------------------- Recipes ------------------------------------//
+
+//This on click event handler will call the youtube api for the video with highest rating after the user hits search button
+$("#searchBtn").on("click", function (request) {
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+  console.log(service)
+  var map;
+  var service;
+  var infowindow;
+
+  function initialize() {
+    var pyrmont = new google.maps.LatLng(32.776700, -96.797000)
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: pyrmont,
+      zoom: 15
+    });
+
+    var request = {
+      location: pyrmont,
+      radius: '500',
+      query: 'restaurant'
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+  }
+
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        var place = results[i];
+        createMarker(results[i]);
+      }
+    }
+  }
+
+});
+
+
+//This function will display the youTube video
+function displayYouTubeVideo() {
+  //This line will display the container holding the button and embedded youTube video
+  $("#howToContainer").show();
+  //This line will change the text of the button to what the user searches for
+  $("#cookButton").text("How to make " + userInput + " video!");
+  //This line displays recipe container
+  $("#recipeList").show();
+}
+
