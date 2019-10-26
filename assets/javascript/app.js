@@ -32,10 +32,10 @@ $("#howToContainer").hide();
 $("#searchBtn").on("click", function(event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
-  //Calls the recipe API to show the recipe list 
+  //Calls the recipe API to show the recipe list
   displayRecipe();
-  //shows the ID for the recipe list 
-  $("#recipeList").show()
+  //shows the ID for the recipe list
+  $("#recipeList").show();
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
@@ -64,6 +64,7 @@ $("#searchBtn").on("click", function(event) {
     url: youTubeUrl,
     method: "GET"
   }).then(function(response) {
+    console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
     //This line will give div a class for bootstrap and an id for custom css use
@@ -111,12 +112,22 @@ $("#openingBtn").on("click", function() {
   $("#recipeList").show();
 });
 
-function displayRecipe() {
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
+$("#recipeList").hide();
 
-  var dish = $("#search-input").val().trim();
+function displayRecipe() {
+  var dish = $("#search-input")
+    .val()
+    .trim();
   //var dish = "chicken";
 
-  var queryURL = "https://api.edamam.com/search?q=" + dish + "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
+  var queryURL =
+    "https://api.edamam.com/search?q=" +
+    dish +
+    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
 
   $.ajax({
     url: queryURL,
@@ -140,26 +151,21 @@ function displayRecipe() {
       row.append("<td>" + results[i].recipe.label + "</td>");
       row.append("<td>" + results[i].recipe.url + "</td>");
       row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
-      row.append("<ul id=groceryList" + i + "> </ul>")
+      row.append("<ul id=groceryList" + i + "> </ul>");
       //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
       $("#recipes").append(row);
-      //for loop for ingredients 
+      //for loop for ingredients
 
       // var ingr = results[i].recipe.ingredientLines.length;
       // console.log("Testiiiiing :" + ingr);
       for (var j = 0; j < results[i].recipe.ingredientLines.length; j++) {
-
         var li = $("<li list-style-type:square>");
         li.text(results[i].recipe.ingredientLines[j]);
         $("#groceryList" + i).append(li);
-
       }
-
-
-
-    }//end of for loop
+    } //end of for loop
   });
-
+}
 $("#searchBtn").on("click", function() {
   // console.log(working);
 });
