@@ -2,7 +2,7 @@
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
@@ -16,7 +16,7 @@ var searchBtn = $("#searchBtn");
 $(searchBtn).hide();
 $(searchPage).hide();
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(searchPage).show();
   $(searchBtn).show();
 });
@@ -29,14 +29,15 @@ $(openingBtn).on("click", function() {
 $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function(event) {
+$("#searchBtn").on("click", function (event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
+  resetRecipe();
   //Calls the recipe API to show the recipe list
   displayRecipe();
   //shows the ID for the recipe list
   $("#recipeList").show();
-  //This line makes an empty variable to hold the search
+  // This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
   userInput = $("#search-input")
@@ -63,7 +64,7 @@ $("#searchBtn").on("click", function(event) {
   $.ajax({
     url: youTubeUrl,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
@@ -107,34 +108,56 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function() {
-  //This line will show the recipelist div from html
-  $("#recipeList").show();
-});
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
 
 // $("#openingBtn").on("click", function () {
 //   //This line will show the recipelist div from html
 //   $("#recipeList").show();
 // });
-$("#recipeList").hide();
+
+
+
+var optionSelected = [];
 
 function displayRecipe() {
-  var dish = $("#search-input")
-    .val()
-    .trim();
+  $("#recipeList").show();
+  var dish = $("#search-input").val().trim();
   //var dish = "chicken";
+  var calorieMAX = $("#calorie-input").val();
 
+  //console.log($("#healthLabels").val());
+  //creating the array with health option 
+  var optionSelected = $("#healthLabels").val();
+  //console.log(optionSelected);
+  var parameter = "";
+  for (a = 0; a < optionSelected.length; a++) {
+    parameter += "&health=" + optionSelected[a];
+    console.log("inside loop :" + parameter);
+  }
+
+
+
+  // console.log("Labels" + $("#healthLabels option:selected").text());
+  // userFoodSearch.push(userInput);
+
+  // healthLabels.push($("#healthLabels").val());
+  //console.log("array :" + healthLabel);
+  // console.log("calories:" + calorieMAX);
   var queryURL =
     "https://api.edamam.com/search?q=" +
     dish +
-    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
-
+    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-" + calorieMAX + parameter + "";
+  // var queryURL =
+  //   "https://api.edamam.com/search?q=chicken&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000&" + parameter + "";
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
-    //console.log(queryURL);
+    console.log(queryURL);
     // storing the data from the AJAX request in the results variable
     var results = response.hits;
     console.log("hits: image : " + results[0].recipe.image);
@@ -145,13 +168,19 @@ function displayRecipe() {
       var foodResult = $("<div>");
       $(foodResult).attr("data-dish", response.q);
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
-
+      var caloriePerServing = 0;
+      var kCal = results[i].recipe.calories;
+      var serving = results[i].recipe.yield;
       var row = $("<tr>");
       row.append(foodImage);
       row.append("<td>" + results[i].recipe.label + "</td>");
       row.append("<td>" + results[i].recipe.url + "</td>");
       row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
+      row.append("<td>" + results[i].recipe.yield + "</td>")
       row.append("<ul id=groceryList" + i + "> </ul>");
+      caloriePerServing = parseInt(kCal / serving);
+      row.append("<td>" + caloriePerServing + "</td>");
+      row.append("<ul id=healthTags" + i + "> </ul>");
       //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
       $("#recipes").append(row);
       //for loop for ingredients
@@ -163,10 +192,21 @@ function displayRecipe() {
         li.text(results[i].recipe.ingredientLines[j]);
         $("#groceryList" + i).append(li);
       }
+
+      for (var k = 0; k < results[i].recipe.ingredientLines.length; k++) {
+        var li = $("<li list-style-type:square>");
+        li.text(results[i].recipe.healthLabels[k]);
+        $("#healthTags" + i).append(li);
+      }
     } //end of for loop
   });
 }
-$("#searchBtn").on("click", function() {
-  // console.log(working);
-});
+
+function resetRecipe() {
+  $("#recipes").empty();
+  optionSelected = [];
+
+}
+
+
 //-------------------------------- Recipes ------------------------------------//

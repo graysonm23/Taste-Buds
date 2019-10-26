@@ -126,7 +126,8 @@ div.search-page {
   transition: 1s;
   z-index: 150%;
 }
-.search-page {
+/* Hibah COmmented it out since it was breaking the input form */
+/* .search-page {
   font-size: 80px;
   font-family: "Yellowtail", cursive;
   color: white;
@@ -138,7 +139,7 @@ div.search-page {
   animation-direction: normal;
   transition: 1s;
   animation-fill-mode: forwards;
-}
+} */
 #searchBtn {
   display: block;
   position: absolute;
@@ -166,5 +167,9 @@ div.search-page {
 #recipeList {
   display: none;
   width: 200px;
+}
+
+#dropdown {
+  width:10%; 
 }
 /*--------------------------------- Recipe List  ----------------------------------*/
