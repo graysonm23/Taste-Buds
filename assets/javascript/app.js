@@ -96,7 +96,7 @@ function displayYouTubeVideo() {
 //   //This line will show the recipelist div from html
 //   $("#recipeList").show();
 // });
-
+$("#recipeList").hide();
 
 function displayRecipe() {
 
