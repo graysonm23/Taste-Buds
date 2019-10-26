@@ -61,6 +61,7 @@ $("#searchBtn").on("click", function (event) {
     url: youTubeUrl,
     method: "GET"
   }).then(function (response) {
+    console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
     //This line will give div a class for bootstrap and an id for custom css use
