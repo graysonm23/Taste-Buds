@@ -113,20 +113,10 @@ div.welcome-page {
   pointer-events: all;
 } */
 /*----------------------------------------------Welcome Page-------------------------------------------------------*/
-/*--------------------------------- Search page -----------------------------------*/
-/* Graysons change*/
-
-/*--------------------------------- Search page -----------------------------------*/
 
 /*--------------------------------- Search page -----------------------------------*/
 div.search-page {
   background-image: url(https://images.pexels.com/photos/1030865/pexels-photo-1030865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  transition: 1s;
-  z-index: 150%; */
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -164,19 +154,22 @@ div.search-page {
   outline: none;
 }
 
-.search-page {
-  /* font-size: 80px;
-  font-family: "Yellowtail", cursive;
-  color: white;
-  animation-name: angry-animation;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  transition: 1s;
-  animation-fill-mode: forwards; */
+.searchBar-move {
+  /* display: block; */
+  position: absolute;
+  animation: 1s;
+  height: 10%;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+.searchBtn-move {
+  position: relative;
+  display: inline-block;
+  top: 20%;
+}
+
 #searchBtn {
   display: block;
   position: absolute;
@@ -235,12 +228,18 @@ div.search-page {
 
 @media screen and (max-width: 450px) {
   #search-input {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  #search-input {
     font-size: 30px;
   }
 }
 
 @media screen and (max-width: 345px) {
   #search-input {
-    font-size: 20px;
+    font-size: 30px;
   }
 }

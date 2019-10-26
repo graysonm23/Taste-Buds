@@ -33,6 +33,10 @@ $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function(event) {
+  //grayson's change----testing
+  $("#search-input").addClass("searchBar-move");
+  $("#searchBtn").addClass("searchBtn-move");
+
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
   //Calls the recipe API to show the recipe list
@@ -90,8 +94,6 @@ $("#searchBtn").on("click", function(event) {
       );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-    //Test
-    console.log(cookVideoContainer);
   });
 });
 
@@ -109,16 +111,6 @@ function displayYouTubeVideo() {
 
 //-------------------------------- Recipes ---------------------------------------//
 
-//need to add  $("#recipeList").hide(); in line 12
-// $("#openingBtn").on("click", function() {
-//This line will show the recipelist div from html
-//   $("#recipeList").show();
-// });
-
-// $("#openingBtn").on("click", function () {
-//   //This line will show the recipelist div from html
-//   $("#recipeList").show();
-// });
 $("#recipeList").hide();
 
 function displayRecipe() {
