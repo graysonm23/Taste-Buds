@@ -2,7 +2,7 @@
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
@@ -16,7 +16,7 @@ var searchBtn = $("#searchBtn");
 $(searchBtn).hide();
 $(searchPage).hide();
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(searchPage).show();
   $(searchBtn).show();
 });
@@ -29,7 +29,7 @@ $(openingBtn).on("click", function () {
 $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function (event) {
+$("#searchBtn").on("click", function(event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
   //Calls the recipe API to show the recipe list 
@@ -39,7 +39,10 @@ $("#searchBtn").on("click", function (event) {
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
-  userInput = $("#search-input").val().toLowerCase().trim();
+  userInput = $("#search-input")
+    .val()
+    .toLowerCase()
+    .trim();
   //This line will push userInput into the userFoodSearch var as a string
   userFoodSearch.push(userInput);
   //This line will empty the textbox so user doesn't need to delete contents after every submission
@@ -56,12 +59,16 @@ $("#searchBtn").on("click", function (event) {
     userFoodSearch +
     "&regionCode=us&relevanceLanguage=en&safeSearch=strict&type=video&videoCaption=any&videoDefinition=any&videoDimension=2d&videoDuration=any&videoEmbeddable=true&videoLicense=youtube&videoSyndicated=true&videoType=any&key=" +
     googleApi;
-  //This starts the ajax call to request data from the youTube api  
+  //This starts the ajax call to request data from the youTube api
   $.ajax({
     url: youTubeUrl,
     method: "GET"
+<<<<<<< HEAD
   }).then(function (response) {
     console.log(response);
+=======
+  }).then(function(response) {
+>>>>>>> 607867f0b54270b695838aae06b3e253bc12ac33
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
     //This line will give div a class for bootstrap and an id for custom css use
@@ -69,13 +76,27 @@ $("#searchBtn").on("click", function (event) {
     //This line will place the div inside the collapsible container
     $("#collapseExample").append(youTubeVideo);
     //This line will place the user search videoId with the most relevance inside cookVideo variable
-    cookVideo = "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
+    cookVideo =
+      "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
     //This line will make the iframe that holds the source video with the attributes for the video player
-    cookVideoContainer = $("<iframe>").attr("src", cookVideo).attr("allowFullscreen", "true").attr("frameBorder", "0").attr("width", "560").attr("height", "315").attr("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+    cookVideoContainer = $("<iframe>")
+      .attr("src", cookVideo)
+      .attr("allowFullscreen", "true")
+      .attr("frameBorder", "0")
+      .attr("width", "560")
+      .attr("height", "315")
+      .attr(
+        "allow",
+        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
+<<<<<<< HEAD
+    //Test
+    console.log(cookVideoContainer);
+=======
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
   });
-
 });
 
 //This function will display the youTube video
@@ -93,11 +114,22 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
+<<<<<<< HEAD
+$("#openingBtn").on("click", function() {
+  //This line will show the recipelist div from html
+  $("#recipeList").show();
+});
+=======
 // $("#openingBtn").on("click", function () {
 //   //This line will show the recipelist div from html
 //   $("#recipeList").show();
 // });
+<<<<<<< HEAD
 $("#recipeList").hide();
+=======
+
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
+>>>>>>> 607867f0b54270b695838aae06b3e253bc12ac33
 
 function displayRecipe() {
 
@@ -109,7 +141,7 @@ function displayRecipe() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     //console.log(queryURL);
     // storing the data from the AJAX request in the results variable
@@ -148,4 +180,11 @@ function displayRecipe() {
     }//end of for loop
   });
 
+<<<<<<< HEAD
+$("#searchBtn").on("click", function() {
+  // console.log(working);
+});
+//-------------------------------- Recipes ------------------------------------//
+=======
 }
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
