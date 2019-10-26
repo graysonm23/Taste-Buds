@@ -157,7 +157,7 @@ div.search-page {
 /*--------------------------------- Search page -----------------------------------*/
 /*--------------------------------- How-To Video ----------------------------------*/
 #howToContainer {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   display: inline-block;
 }
 /*--------------------------------- How-To Video ----------------------------------*/
@@ -165,6 +165,6 @@ div.search-page {
 
 #recipeList {
   display: none;
-  width:200px; 
+  width: 200px;
 }
 /*--------------------------------- Recipe List  ----------------------------------*/

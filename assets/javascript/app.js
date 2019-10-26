@@ -86,11 +86,8 @@ $("#searchBtn").on("click", function(event) {
       );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-<<<<<<< HEAD
     //Test
     console.log(cookVideoContainer);
-=======
->>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
   });
 });
 
@@ -109,18 +106,10 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-<<<<<<< HEAD
 $("#openingBtn").on("click", function() {
   //This line will show the recipelist div from html
   $("#recipeList").show();
 });
-=======
-// $("#openingBtn").on("click", function () {
-//   //This line will show the recipelist div from html
-//   $("#recipeList").show();
-// });
-
->>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
 
 function displayRecipe() {
 
@@ -171,11 +160,7 @@ function displayRecipe() {
     }//end of for loop
   });
 
-<<<<<<< HEAD
 $("#searchBtn").on("click", function() {
   // console.log(working);
 });
 //-------------------------------- Recipes ------------------------------------//
-=======
-}
->>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
