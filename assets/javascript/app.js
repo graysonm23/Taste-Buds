@@ -25,10 +25,17 @@ $(openingBtn).on("click", function() {
 
 //--------------------------------How-To Video (Emir)------------------------------------//
 
+//This line hides the container holding the youtube video
+$("#howToContainer").hide();
+
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function(event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
+  //Calls the recipe API to show the recipe list 
+  displayRecipe();
+  //shows the ID for the recipe list 
+  $("#recipeList").show()
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
@@ -79,8 +86,11 @@ $("#searchBtn").on("click", function(event) {
       );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
+<<<<<<< HEAD
     //Test
     console.log(cookVideoContainer);
+=======
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
   });
 });
 
@@ -99,20 +109,25 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
+<<<<<<< HEAD
 $("#openingBtn").on("click", function() {
   //This line will show the recipelist div from html
   $("#recipeList").show();
 });
+=======
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
 
-//displayRecipe();
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
+
 function displayRecipe() {
-  var dish = $("#search-input");
+
+  var dish = $("#search-input").val().trim();
   //var dish = "chicken";
 
-  var queryURL =
-    "https://api.edamam.com/search?q=" +
-    dish +
-    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=10&calories=0-1000000";
+  var queryURL = "https://api.edamam.com/search?q=" + dish + "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
 
   $.ajax({
     url: queryURL,
@@ -122,20 +137,45 @@ function displayRecipe() {
     //console.log(queryURL);
     // storing the data from the AJAX request in the results variable
     var results = response.hits;
-    console.log("hits: recipe : " + results[0].recipe.image);
-    console.log("hits: recipe : " + results[0].recipe.url);
+    console.log("hits: image : " + results[0].recipe.image);
+    console.log("hits: URL: " + results[0].recipe.url);
+    console.log("hits: serach name : " + response.q);
 
     for (var i = 0; i < results.length; i++) {
       var foodResult = $("<div>");
       $(foodResult).attr("data-dish", response.q);
-      var p = $("<p>").text("Recipe: " + results[i].recipe.url);
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
-      console.log("inside loop -  : " + results[0].recipe.url);
-    } //end of for loop
-  });
-}
 
+      var row = $("<tr>");
+      row.append(foodImage);
+      row.append("<td>" + results[i].recipe.label + "</td>");
+      row.append("<td>" + results[i].recipe.url + "</td>");
+      row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
+      row.append("<ul id=groceryList" + i + "> </ul>")
+      //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
+      $("#recipes").append(row);
+      //for loop for ingredients 
+
+      // var ingr = results[i].recipe.ingredientLines.length;
+      // console.log("Testiiiiing :" + ingr);
+      for (var j = 0; j < results[i].recipe.ingredientLines.length; j++) {
+
+        var li = $("<li list-style-type:square>");
+        li.text(results[i].recipe.ingredientLines[j]);
+        $("#groceryList" + i).append(li);
+
+      }
+
+
+
+    }//end of for loop
+  });
+
+<<<<<<< HEAD
 $("#searchBtn").on("click", function() {
   // console.log(working);
 });
 //-------------------------------- Recipes ------------------------------------//
+=======
+}
+>>>>>>> f15a4d03cff909a47d1bce9ad7be80c2fb2c0be6
