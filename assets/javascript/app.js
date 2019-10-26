@@ -1,6 +1,9 @@
 //--------------------------------Welcome page------------------------------------
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
+let modal = $("#myModal");
+
+$(modal).hide();
 
 $(openingBtn).on("click", function() {
   $(openingPage).hide();
@@ -107,10 +110,10 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function() {
-  //This line will show the recipelist div from html
-  $("#recipeList").show();
-});
+// $("#openingBtn").on("click", function() {
+//This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
 
 // $("#openingBtn").on("click", function () {
 //   //This line will show the recipelist div from html
