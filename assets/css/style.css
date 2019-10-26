@@ -137,7 +137,8 @@ div.search-page {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
   font-size: 80px;
-  padding: 20px;
+  padding: 50px;
+  text-indent: 20px;
   overflow-x: auto;
   font-family: "Yellowtail", cursive;
   animation-name: angry-animation;
