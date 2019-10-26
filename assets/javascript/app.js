@@ -135,38 +135,34 @@ $("#searchBtn").on("click", function () {
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (request) {
 
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-  console.log(service)
-  var map;
-  var service;
-  var infowindow;
-
-  function initialize() {
-    var pyrmont = new google.maps.LatLng(32.776700, -96.797000)
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: pyrmont,
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: -33.866, lng: 151.196 },
       zoom: 15
     });
 
     var request = {
-      location: pyrmont,
-      radius: '500',
-      query: 'restaurant'
+      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+      fields: ['name', 'formatted_address', 'place_id', 'geometry']
     };
 
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
-  }
+    var infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
 
-  function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        var place = results[i];
-        createMarker(results[i]);
+    service.getDetails(request, function (place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+            'Place ID: ' + place.place_id + '<br>' +
+            place.formatted_address + '</div>');
+          infowindow.open(map, this);
+        });
       }
-    }
+    });
   }
 
 });
