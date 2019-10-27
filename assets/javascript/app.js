@@ -43,71 +43,71 @@ $("#searchBtn").on("click", function (event) {
   resetRecipe();
   //Calls the recipe API to show the recipe list
   displayRecipe();
-  //   //shows the ID for the recipe list
-  //   $("#recipeList").show();
-  //   // This line makes an empty variable to hold the search
-  //   var userFoodSearch = [];
-  //   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
-  //   userInput = $("#search-input")
-  //     .val()
-  //     .toLowerCase()
-  //     .trim();
-  //   //This line will push userInput into the userFoodSearch var as a string
-  //   userFoodSearch.push(userInput);
-  //   //This line will empty the textbox so user doesn't need to delete contents after every submission
-  //   $("#search-input").val("");
-  //   //This line will clear the container holding the youTube video when user searches for a new food item
-  //   $("#collapseExample").empty();
-  //   //This local variable holds the google api key used for requesting youtube data
-  //   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
-  //   //This line will call the displayYouTubeVideo function to display video searched
-  //   displayYouTubeVideo();
-  //   //This local variable holds the queryUrl used from youTube along with search parameters
-  //   var youTubeUrl =
-  //     "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=how+to+make+" +
-  //     userFoodSearch +
-  //     "&regionCode=us&relevanceLanguage=en&safeSearch=strict&type=video&videoCaption=any&videoDefinition=any&videoDimension=2d&videoDuration=any&videoEmbeddable=true&videoLicense=youtube&videoSyndicated=true&videoType=any&key=" +
-  //     googleApi;
-  //   //This starts the ajax call to request data from the youTube api
-  //   $.ajax({
-  //     url: youTubeUrl,
-  //     method: "GET"
-  //   }).then(function (response) {
-  //     console.log(response);
-  //     //This line makes a variable to place the iframe div inside (this holds the youtube video)
-  //     youTubeVideo = $("<div>");
-  //     //This line will give div a class for bootstrap and an id for custom css use
-  //     youTubeVideo.addClass("card card-body").attr("id", "videoContainer");
-  //     //This line will place the div inside the collapsible container
-  //     $("#collapseExample").append(youTubeVideo);
-  //     //This line will place the user search videoId with the most relevance inside cookVideo variable
-  //     cookVideo =
-  //       "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
-  //     //This line will make the iframe that holds the source video with the attributes for the video player
-  //     cookVideoContainer = $("<iframe>")
-  //       .attr("src", cookVideo)
-  //       .attr("allowFullscreen", "true")
-  //       .attr("frameBorder", "0")
-  //       .attr("width", "560")
-  //       .attr("height", "315")
-  //       .attr(
-  //         "allow",
-  //         "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  //       );
-  //     //This line will place the video inside the youTubeVideo container that holds the iframe
-  //     youTubeVideo.append(cookVideoContainer);
-  //   });
+  //shows the ID for the recipe list
+  $("#recipeList").show();
+  // This line makes an empty variable to hold the search
+  var userFoodSearch = [];
+  //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
+  userInput = $("#search-input")
+    .val()
+    .toLowerCase()
+    .trim();
+  //This line will push userInput into the userFoodSearch var as a string
+  userFoodSearch.push(userInput);
+  //This line will empty the textbox so user doesn't need to delete contents after every submission
+  $("#search-input").val("");
+  //This line will clear the container holding the youTube video when user searches for a new food item
+  $("#collapseExample").empty();
+  //This local variable holds the google api key used for requesting youtube data
+  var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
+  //This line will call the displayYouTubeVideo function to display video searched
+  displayYouTubeVideo();
+  //This local variable holds the queryUrl used from youTube along with search parameters
+  var youTubeUrl =
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=how+to+make+" +
+    userFoodSearch +
+    "&regionCode=us&relevanceLanguage=en&safeSearch=strict&type=video&videoCaption=any&videoDefinition=any&videoDimension=2d&videoDuration=any&videoEmbeddable=true&videoLicense=youtube&videoSyndicated=true&videoType=any&key=" +
+    googleApi;
+  //This starts the ajax call to request data from the youTube api
+  $.ajax({
+    url: youTubeUrl,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    //This line makes a variable to place the iframe div inside (this holds the youtube video)
+    youTubeVideo = $("<div>");
+    //This line will give div a class for bootstrap and an id for custom css use
+    youTubeVideo.addClass("card card-body").attr("id", "videoContainer");
+    //This line will place the div inside the collapsible container
+    $("#collapseExample").append(youTubeVideo);
+    //This line will place the user search videoId with the most relevance inside cookVideo variable
+    cookVideo =
+      "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
+    //This line will make the iframe that holds the source video with the attributes for the video player
+    cookVideoContainer = $("<iframe>")
+      .attr("src", cookVideo)
+      .attr("allowFullscreen", "true")
+      .attr("frameBorder", "0")
+      .attr("width", "560")
+      .attr("height", "315")
+      .attr(
+        "allow",
+        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      );
+    //This line will place the video inside the youTubeVideo container that holds the iframe
+    youTubeVideo.append(cookVideoContainer);
+  });
 });
 
-// //This function will display the youTube video
-// function displayYouTubeVideo() {
-//   //This line will display the container holding the button and embedded youTube video
-//   $("#howToContainer").show();
-//   //This line will change the text of the button to what the user searches for
-//   $("#cookButton").text("How to make " + userInput + " video!");
-//   //This line displays recipe container
-//   $("#recipeList").show();
-// }
+//This function will display the youTube video
+function displayYouTubeVideo() {
+  //This line will display the container holding the button and embedded youTube video
+  $("#howToContainer").show();
+  //This line will change the text of the button to what the user searches for
+  $("#cookButton").text("How to make " + userInput + " video!");
+  //This line displays recipe container
+  $("#recipeList").show();
+}
 
 //--------------------------------How-To Video (Emir)------------------------------------//
 
