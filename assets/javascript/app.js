@@ -325,12 +325,8 @@ function hideRest() {
   if (userLocation === '') {
     $('#restaurantContainer').hide()
   }
-
-  if (userInput === '') {
-    $('#restaurantContainer').hide()
-  }
-
 }
+
 
 
 
