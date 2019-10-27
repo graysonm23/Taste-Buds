@@ -197,9 +197,14 @@ div.search-page {
 /*--------------------------------- How-To Video ----------------------------------*/
 /*--------------------------------- Recipe List  ----------------------------------*/
 
-#recipeList {
+/* Commented it out to test if I can see the recipe results - Hibah */
+/* #recipeList {
   display: none;
   width: 200px;
+} */
+
+#recipeLink {
+  font-size:21px; 
 }
 
 #dropdown {

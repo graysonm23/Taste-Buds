@@ -58,8 +58,10 @@ $("#searchBtn").on("click", function (event) {
 
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
+  //DO NOT REMOVE - HIBAH
   $("#recipeList").show();
-  // resetRecipe();
+  //DO NOT REMOVE - HIBAH
+  resetRecipe();
   //Calls the recipe API to show the recipe list
   displayRecipe();
   //Calls restaurant API to display restaurants nearby
@@ -143,7 +145,7 @@ function displayYouTubeVideo() {
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //-------------------------------- Recipes ---------------------------------------//
-
+//NEEDS TO BE DELETED
 //need to add  $("#recipeList").hide(); in line 12
 // $("#openingBtn").on("click", function () {
 //   //This line will show the recipelist div from html
@@ -156,6 +158,8 @@ function displayYouTubeVideo() {
 // });
 
 
+
+//START - DO NOT REMOVE PLEASE -- HIbah 
 
 var optionSelected = [];
 
@@ -175,9 +179,6 @@ function displayRecipe() {
     parameter += "&health=" + optionSelected[a];
     console.log("inside loop for health parameter :" + parameter);
   }
-
-
-
   // console.log("Labels" + $("#healthLabels option:selected").text());
   // userFoodSearch.push(userInput);
 
@@ -213,19 +214,21 @@ function displayRecipe() {
 
       $("#foodImage").append(foodImage);
       //append title to h2 
-      $("h2").append(response.q);
-
-      foodResult.append("<p id=label>" + results[i].recipe.label + "</p>");
-      foodResult.append("<p id=URL>" + results[i].recipe.url + "</p>");
-      foodResult.append("<p id=caloriesForDish>" + Math.round(results[i].recipe.calories) + "</p>");
-      foodResult.append("<p id=serving>" + results[i].recipe.yield + "</p>");
-      foodResult.append("<ul id=groceryList" + i + "> </ul>");
+      $("h2").text(results[i].recipe.label);
+      //for each info need to add title 
+      // foodResult.append("<p id=label><span class='title'>Recipe Name: </span> <br>" + results[i].recipe.label + "</p>");
+      var recipeURL = results[i].recipe.url;
+      foodResult.append("<a href=" + recipeURL + " target='_blank' id='recipeLink'> " + "Link to the Recipe" + "</a > ");
+      console.log("<a href=" + recipeURL + ">")
+      foodResult.append("<p id=caloriesForDish><span class='title'>Total Calories: </span> <br>" + Math.round(results[i].recipe.calories) + "</p>");
+      foodResult.append("<p id=serving><span class='title'>Servings: </span> <br>" + results[i].recipe.yield + "</p>");
+      foodResult.append("<ol id=groceryList" + i + "><span class='title'>Ingredients </span> <br> </ol>");
       caloriePerServing = parseInt(kCal / serving);
-      foodResult.append("<p id=calories>" + caloriePerServing + "<p>");
-      foodResult.append("<ul id=healthTags" + i + "> </ul>");
+      foodResult.append("<p id=calories><span class='title'>Calories Per Serving:</span> <br>" + caloriePerServing + "<p>");
+      foodResult.append("<ul id=healthTags" + i + "><span class='title'>Health Labels </span> <br> </ul>");
       $("#facts").append(foodResult);
 
-
+      //DO NOT REMOVE 
 
       // Commented out table format
       // var foodResult = $("<div>");
@@ -263,12 +266,18 @@ function displayRecipe() {
       }
     } //end of for loop
   });
+}
 
-  $("#searchBtn").on("click", function () {
-    // console.log(working);
-  });
+function resetRecipe() {
+  $("#recipes").empty();
+  $("#foodImage").empty();
+  $("#facts").empty();
+  optionSelected = [];
 
-};
+}
+
+
+//END - DO NOT REMOVE PLEASE -- Hibah 
 //-------------------------------- Recipes ------------------------------------//
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
