@@ -32,6 +32,30 @@
   </div>
   <!------------------------------ Welcome page ----------------------------------->
   ​
+
+
+
+
+  <!------------------------------------ Zip Page ------------------------------------>
+  ​
+  <div class="zip-page" style="align-content: center;">
+    <!-- Input Form -->
+    <form class="text-center" id="zip-form" style="text-align: center; align-items: center;">
+      <input type="text" id="zip-input" style="text-align: center; color:black" placeholder="Zip Code"
+        autocomplete="off"
+        onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+        required />
+      <button class="button is-success" type="submit" id="zipBtn">Zip Code</button>
+    </form>
+  </div>
+  <!------------------------------------ Zip Page----------------------------------->
+
+
+
+
+
+
+
   <!------------------------------------ Search Page ------------------------------------>
   ​
   <div class="search-page" style="align-content: center;">
@@ -55,22 +79,40 @@
   ​
   <!------------------------------------ How-To Video ----------------------------------->
 
+
+  <!--------------------------------------Recipe List ---------------------------------->
+  <div class="card" id="recipeList">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Recipe</th>
+          <th scope="col">Calories</th>
+          <th scope="col">Ingredients</th>
+        </tr>
+      </thead>
+      <tbody id="recipes">
+      </tbody>
+    </table>
+
+  </div>
+
   <!------------------------------------ Restaurant Info ----------------------------------->
-  <div class="card" id="howToContainer">
+
+  <div class="card" id="restaurantContainer">
     <div class="card-body">
-      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
-      <div class="collapse" id="restaurantInfo"></div>
+      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExamples"
+        aria-expanded="false" aria-controls="collapseExample" id="restaurantButton"></button>
+      <div class="collapse" id="collapseExamples"></div>
     </div>
   </div>
+  <!-- <div id="restaurantInfo">
+        <p>Hello</p>
+      </div> -->
   ​
   <!------------------------------------ Restaurant Info ----------------------------------->
 
-
-  <!--------------------------------------Recipe List ---------------------------------->
-  <div id="recipeList">
-
-  </div>
 
 
   <!-- jQuery CDN goes Here -->
@@ -84,41 +126,6 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-  <!-- Places API script -->
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsl1IEMxn347EfAVnKCtmIVzXtD9HODC8&libraries=places">
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: { lat: -33.866, lng: 151.196 },
-          zoom: 15
-        });
-
-        var request = {
-          placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-          fields: ['name', 'formatted_address', 'place_id', 'geometry']
-        };
-
-        var infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-
-        service.getDetails(request, function (place, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            var marker = new google.maps.Marker({
-              map: map,
-              position: place.geometry.location
-            });
-            google.maps.event.addListener(marker, 'click', function () {
-              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Place ID: ' + place.place_id + '<br>' +
-                place.formatted_address + '</div>');
-              infowindow.open(map, this);
-            });
-          }
-        });
-      }
-
-    </script>
 
 
   <!-- Logic JavaScript link here -->

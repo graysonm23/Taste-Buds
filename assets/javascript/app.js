@@ -9,6 +9,25 @@ $(openingBtn).on("click", function () {
 });
 //--------------------------------Welcome page------------------------------------//
 
+
+
+
+var zipPage = $(".zip-page");
+var zipBtn = $("#zipBtn");
+
+$(zipBtn).hide();
+$(zipPage).hide();
+
+$(openingBtn).on("click", function () {
+  $(zipPage).show();
+  $(zipBtn).show();
+});
+
+
+
+
+
+
 //--------------------------------Search page------------------------------------//
 var searchPage = $(".search-page");
 var searchBtn = $("#searchBtn");
@@ -25,10 +44,21 @@ $(openingBtn).on("click", function () {
 
 //--------------------------------How-To Video (Emir)------------------------------------//
 
+//This line hides the container holding the youtube video
+$("#howToContainer").hide();
+
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
+  //Calls the recipe API to show the recipe list 
+  displayRecipe();
+  //Calls restaurant API to display restaurants nearby
+  dispRestaurant();
+  //shows the ID for the recipe list 
+  $("#recipeList").show()
+  //shows restaurant container
+  $('#restaurantContainer').show()
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
@@ -66,9 +96,6 @@ $("#searchBtn").on("click", function (event) {
     cookVideoContainer = $("<iframe>").attr("src", cookVideo).attr("allowFullscreen", "true").attr("frameBorder", "0").attr("width", "560").attr("height", "315").attr("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-    //Test
-    console.log(cookVideoContainer);
-
   });
 
 });
@@ -78,6 +105,10 @@ function displayYouTubeVideo() {
   //This line will display the container holding the button and embedded youTube video
   $("#howToContainer").show();
   //This line will change the text of the button to what the user searches for
+  $('#restaurantContainer').show()
+
+  $("#restaurantButton").text("Restaurants nearby that serve " + userInput + "!");
+
   $("#cookButton").text("How to make " + userInput + " video!");
   //This line displays recipe container
   $("#recipeList").show();
@@ -88,20 +119,18 @@ function displayYouTubeVideo() {
 //-------------------------------- Recipes ---------------------------------------//
 
 //need to add  $("#recipeList").hide(); in line 12
-$("#openingBtn").on("click", function () {
-  //This line will show the recipelist div from html
-  $("#recipeList").show();
-});
+// $("#openingBtn").on("click", function () {
+//   //This line will show the recipelist div from html
+//   $("#recipeList").show();
+// });
 
-//displayRecipe();
+
 function displayRecipe() {
-  var dish = $("#search-input");
+
+  var dish = $("#search-input").val().trim();
   //var dish = "chicken";
 
-  var queryURL =
-    "https://api.edamam.com/search?q=" +
-    dish +
-    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=10&calories=0-1000000";
+  var queryURL = "https://api.edamam.com/search?q=" + dish + "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000000";
 
   $.ajax({
     url: queryURL,
@@ -111,70 +140,100 @@ function displayRecipe() {
     //console.log(queryURL);
     // storing the data from the AJAX request in the results variable
     var results = response.hits;
-    console.log("hits: recipe : " + results[0].recipe.image);
-    console.log("hits: recipe : " + results[0].recipe.url);
+    // console.log("hits: image : " + results[0].recipe.image);
+    // console.log("hits: URL: " + results[0].recipe.url);
+    // console.log("hits: serach name : " + response.q);
 
     for (var i = 0; i < results.length; i++) {
       var foodResult = $("<div>");
       $(foodResult).attr("data-dish", response.q);
-      var p = $("<p>").text("Recipe: " + results[i].recipe.url);
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
-      console.log("inside loop -  : " + results[0].recipe.url);
-    } //end of for loop
-  });
-}
 
-$("#searchBtn").on("click", function () {
-  // console.log(working);
-});
-//-------------------------------- Recipes ------------------------------------//
+      var row = $("<tr>");
+      row.append(foodImage);
+      row.append("<td>" + results[i].recipe.label + "</td>");
+      row.append("<td>" + results[i].recipe.url + "</td>");
+      row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
+      row.append("<ul id=groceryList" + i + "> </ul>")
+      //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
+      $("#recipes").append(row);
+      //for loop for ingredients 
 
+      // var ingr = results[i].recipe.ingredientLines.length;
+      // console.log("Testiiiiing :" + ingr);
+      for (var j = 0; j < results[i].recipe.ingredientLines.length; j++) {
 
-//-------------------------------- Recipes ------------------------------------//
+        var li = $("<li list-style-type:square>");
+        li.text(results[i].recipe.ingredientLines[j]);
+        $("#groceryList" + i).append(li);
 
-//This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function (request) {
-
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: -33.866, lng: 151.196 },
-      zoom: 15
-    });
-
-    var request = {
-      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-      fields: ['name', 'formatted_address', 'place_id', 'geometry']
-    };
-
-    var infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-
-    service.getDetails(request, function (place, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-            'Place ID: ' + place.place_id + '<br>' +
-            place.formatted_address + '</div>');
-          infowindow.open(map, this);
-        });
       }
-    });
-  }
 
+
+
+    }//end of for loop
+  });
+
+  $("#searchBtn").on("click", function () {
+    // console.log(working);
+  });
+
+};
+//-------------------------------- Recipes ------------------------------------//
+
+//-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
+
+
+$('#restaurantContainer').hide()
+
+function dispRestaurant() {
+  var foodChoice = $("#search-input").val().toLowerCase().trim();
+  var foodChoiceNoSpace = foodChoice.replace(/\s/g, "");
+  var userLocation = $("#zip-input").val()
+  var placesUrl = "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" + foodChoiceNoSpace + "in%20" + userLocation + "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
+  console.log(placesUrl);
+
+
+  $('#collapseExamples').empty()
+  $.ajax({
+    url: placesUrl,
+    method: "GET"
+  }).then(function (response) {
+    var resourceResponse = response.resourceSets[0].resources
+    console.log(resourceResponse)
+
+    for (var i = 0; i < resourceResponse.length; i++) {
+
+
+      var restData = $("<div id='restaurant'>");
+      var restName = resourceResponse[i].name;
+      var restAddy = resourceResponse[i].Address.formattedAddress;
+      var restPhone = resourceResponse[i].PhoneNumber;
+
+      var pOne = $("<p class='text-center'>").text(" Restaurant Name: " + restName + " | Address: " + restAddy + " | Phone: " + restPhone);
+      pOne.addClass("card card-body")
+
+      restData.append(pOne)
+      $("#collapseExamples").append(restData);
+
+    }
+
+
+
+  })
+
+
+
+}
+
+$("#zipBtn").on("click", function (event) {
+  event.preventDefault();
+  $(zipBtn).attr("disabled", "disabled");
+  dispRestaurant();
+  displayRecipe();
+  displayYouTubeVideo();
 });
 
+//-------------------------------- Restaurant ------------------------------------//
 
-//This function will display the youTube video
-function displayYouTubeVideo() {
-  //This line will display the container holding the button and embedded youTube video
-  $("#howToContainer").show();
-  //This line will change the text of the button to what the user searches for
-  $("#cookButton").text("How to make " + userInput + " video!");
-  //This line displays recipe container
-  $("#recipeList").show();
-}
 
