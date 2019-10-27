@@ -30,6 +30,7 @@
       <button id="openingBtn" class="button is-success">Head on in...</button>
     </div>
   </div>
+  </div>
   <!------------------------------ Welcome page ----------------------------------->
   ​
 
@@ -38,16 +39,16 @@
 
   <!------------------------------------ Zip Page ------------------------------------>
   ​
-  <div class="zip-page" style="align-content: center;">
-    <!-- Input Form -->
-    <form class="text-center" id="zip-form" style="text-align: center; align-items: center;">
+  <!-- <div class="zip-page" style="align-content: center;">
+    Input Form -->
+  <!-- <form class="text-center" id="zip-form" style="text-align: center; align-items: center;">
       <input type="text" id="zip-input" style="text-align: center; color:black" placeholder="Zip Code"
         autocomplete="off"
         onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
         required />
       <button class="button is-success" type="submit" id="zipBtn">Zip Code</button>
     </form>
-  </div>
+  </div> -->
   <!------------------------------------ Zip Page----------------------------------->
 
 
@@ -60,20 +61,54 @@
   ​
   <div class="search-page" style="align-content: center;">
     <!-- Input Form -->
-    <form class="text-center" id="search-form" style="text-align: center; align-items: center;">
-      <input type="text" id="search-input" style="text-align: center; color:black" placeholder="What will it be today?"
-        autocomplete="off" />
-      <button class="button is-success" type="submit" id="searchBtn">Check it out</button>
-    </form>
-  </div>
-  <!------------------------------------Search Page----------------------------------->
-  ​
-  <!------------------------------------ How-To Video ----------------------------------->
-  <div class="card" id="howToContainer">
-    <div class="card-body">
-      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
-      <div class="collapse" id="collapseExample"></div>
+    <div class="search-page">
+      <!-- Input Form -->
+      <form class="text-center" id="search-form">
+        <input type="text" id="search-input" placeholder="What will it be today?" autocomplete="on" />
+        <!------------------------------- Zip Code input ---------->
+        <br>
+        <div class="form-group row; text-center" style="margin-top: 5%">
+          <input type="text" id="zip-input" style="text-align: center; color:black" placeholder="Zip Code"
+            autocomplete="off"
+            onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+            required />
+
+        </div>
+        <!-- Calories input Hibah -->
+        <br>
+        <div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">Max Calories</label>
+          <div class="col-10">
+            <input class="form-control" type="number" id="calorie-input">
+          </div>
+        </div>
+
+        <!-- End of Calories input -->
+        <!-- Start Multiselect Drop down Hibah-->
+        <section id="dropDown">
+
+
+          <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
+            searchable="Search here..">
+            <option value="" disabled selected> Select Healthy Labels (Optional) </option>
+            <option value="alcohol-free">alcohol-free</option>
+            <option value="crustacean-free">crustacean-free</option>
+            <option value="dairy-free">dairy-free</option>
+            <option value="egg-free">egg-free</option>
+            <option value="keto">keto</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="tree-nut-free">Tree-Nut-free</option>
+          </select>
+          <label class="mdb-main-label">Label example</label>
+
+        </section>
+        <!--  End Multiselect Drop down -->
+        <div class="form-group row; text-center" style="margin-top: 5%">
+          <button class="button is-success" type="submit" id="searchBtn">
+            Check it out
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   ​
@@ -95,8 +130,36 @@
       <tbody id="recipes">
       </tbody>
     </table>
-
   </div>
+  <!------------------------------------Search Page----------------------------------->
+  ​
+  <!------------------------------------ How-To Video ----------------------------------->
+  <div class="card" id="howToContainer">
+    <div class="card-body">
+      <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button>
+      <div class="collapse" id="collapseExample"></div>
+    </div>
+  </div>
+  ​
+  <!------------------------------------ How-To Video ----------------------------------->
+  <!--------------------------------------Recipe List with Divs---------------------------------->
+  <section>
+    <h2 style="color:black" ;>Testing Text</h2>
+    <!-- div for image -->
+    <div id=foodImage>
+
+    </div>
+    <!-- div for calorie nutrition facts  image -->
+    <div id=facts>
+
+    </div>
+
+
+  </section>
+
+  <!--------------------------------------End of Recipe List with Divs---------------------------------->
+
 
   <!------------------------------------ Restaurant Info ----------------------------------->
 
@@ -107,9 +170,7 @@
       <div class="collapse" id="collapseExamples"></div>
     </div>
   </div>
-  <!-- <div id="restaurantInfo">
-        <p>Hello</p>
-      </div> -->
+
   ​
   <!------------------------------------ Restaurant Info ----------------------------------->
 
