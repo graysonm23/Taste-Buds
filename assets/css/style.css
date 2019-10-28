@@ -1,8 +1,8 @@
 /*---------------------------------Welcome page-------------------------------------*/
 #imageWP {
   background-image: url(https://cdn.pixabay.com/photo/2017/08/05/21/34/chef-2585791_1280.jpg);
-  -webkit-animation: kenburns-top 30s ease-in alternate-reverse backwards;
-  animation: kenburns-top 30s ease-in alternate-reverse backwards;
+  -webkit-animation: kenburns-top 50s ease-in alternate-reverse backwards;
+  animation: kenburns-top 50s ease-in alternate-reverse backwards;
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;

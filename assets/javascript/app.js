@@ -149,7 +149,7 @@ function displayYouTubeVideo() {
   $("#howToContainer").show();
 
   //Show restaurants nearby container
-  // $('#restaurantContainer').show()
+  $("#restaurantContainer").show();
   //Changes text on button
   $("#restaurantButton").text(
     "Restaurants nearby that serve " + userInput + "!"
