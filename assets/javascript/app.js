@@ -66,9 +66,19 @@ $("#searchBtn").on("click", function (event) {
   dispRestaurant();
   //Calls function to hide restaurant display
   hideRest();
+
+  // pageStop();
   //shows the ID for the recipe list 
   $("#recipeList").show()
   //shows restaurant container
+
+
+  // function pageStop(userInput) {
+  //   if (userInput === undefined) {
+  //     alert("Please make selection!")
+  //   }
+  // }
+
 
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
@@ -284,6 +294,7 @@ function dispRestaurant() {
   var placesUrl = "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" + foodChoiceNoSpace + "in%20" + userLocation + "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
 
+
   $('#restaurantContainer').show()
 
   $('#collapseExamples').empty()
@@ -310,12 +321,12 @@ function dispRestaurant() {
 
     }
 
+
     // food choice selected has no nearby restaurants serving it
     if (resourceResponse.length === 0) {
       $("#restaurantButton").text("NO restaurants nearby serve " + userInput + "!");
 
     }
-
 
   })
 }
@@ -323,9 +334,20 @@ function dispRestaurant() {
 function hideRest() {
   // user doesn't input zip code
   if (userLocation === '') {
-    $('#restaurantContainer').hide()
+    $('#restaurantContainer').hide();
   }
 }
+
+$(document).on('submit', 'form', function () {
+
+  if (userInput === undefined || userInput === null) {
+    alert('Please make a selection!');
+    return false;
+  } else {
+    alert('Proceed with submit');
+  }
+});
+// console.log(pageStop)
 
 
 
