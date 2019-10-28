@@ -1,10 +1,10 @@
 //----------------------------Loading Animation-----------------------------------//
 $(".lds-hourglass").hide();
 $(document).on({
-  ajaxStart: function() {
+  ajaxStart: function () {
     $(".lds-hourglass").show();
   },
-  ajaxStop: function() {
+  ajaxStop: function () {
     $(".lds-hourglass").hide();
   }
 });
@@ -14,7 +14,7 @@ $(document).on({
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
@@ -30,7 +30,7 @@ $(searchBtn).hide();
 $(searchPage).hide();
 $(searchItems).hide();
 
-$(openingBtn).on("click", function() {
+$(openingBtn).on("click", function () {
   $(searchPage).show();
   $(searchBtn).show();
   $(searchItems).show();
@@ -42,9 +42,10 @@ $(openingBtn).on("click", function() {
 
 //This line hides the container holding the youtube video
 $(".how-to-video").hide();
+$("#recipeList").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function(event) {
+$("#searchBtn").on("click", function (event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
 
@@ -55,8 +56,6 @@ $("#searchBtn").on("click", function(event) {
   $(".row").addClass("fadeIn");
 
   //DO NOT REMOVE - HIBAH
-  $("#recipeList").show();
-  //DO NOT REMOVE - HIBAH
   resetRecipe();
   //Calls the recipe API to show the recipe list
   displayRecipe();
@@ -65,7 +64,7 @@ $("#searchBtn").on("click", function(event) {
   //Calls function to hide restaurant display
   hideRest();
   //shows the ID for the recipe list
-  $("#recipeList").show();
+  // hibah  $("#recipeList").show();
   //shows restaurant container
 
   //This line makes an empty variable to hold the search
@@ -100,7 +99,7 @@ $("#searchBtn").on("click", function(event) {
   $.ajax({
     url: youTubeUrl,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
@@ -144,7 +143,7 @@ function displayYouTubeVideo() {
   //This line will change the text of the button to what the user searches for
   // $("#cookButton").text("How to make " + userInput + " video!"); Commented out by Grayson
   //This line displays recipe container
-  $("#recipeList").show();
+  //hibah $("#recipeList").show();
 }
 
 //--------------------------------How-To Video (Emir)------------------------------------//
@@ -202,7 +201,7 @@ function displayRecipe() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     console.log(queryURL);
     // storing the data from the AJAX request in the results variable
@@ -228,37 +227,37 @@ function displayRecipe() {
       var recipeURL = results[i].recipe.url;
       foodResult.append(
         "<a href=" +
-          recipeURL +
-          " target='_blank' id='recipeLink'> " +
-          "Link to the Recipe" +
-          "</a > "
+        recipeURL +
+        " target='_blank' id='recipeLink'> " +
+        "Link to the Recipe" +
+        "</a > "
       );
       console.log("<a href=" + recipeURL + ">");
       foodResult.append(
         "<p id=caloriesForDish><span class='title'>Total Calories: </span> <br>" +
-          Math.round(results[i].recipe.calories) +
-          "</p>"
+        Math.round(results[i].recipe.calories) +
+        "</p>"
       );
       foodResult.append(
         "<p id=serving><span class='title'>Servings: </span> <br>" +
-          results[i].recipe.yield +
-          "</p>"
+        results[i].recipe.yield +
+        "</p>"
       );
       foodResult.append(
         "<ol id=groceryList" +
-          i +
-          "><span class='title'>Ingredients </span> <br> </ol>"
+        i +
+        "><span class='title'>Ingredients </span> <br> </ol>"
       );
       caloriePerServing = parseInt(kCal / serving);
       foodResult.append(
         "<p id=calories><span class='title'>Calories Per Serving:</span> <br>" +
-          caloriePerServing +
-          "<p>"
+        caloriePerServing +
+        "<p>"
       );
       foodResult.append(
         "<ul id=healthTags" +
-          i +
-          "><span class='title'>Health Labels </span> <br> </ul>"
+        i +
+        "><span class='title'>Health Labels </span> <br> </ul>"
       );
       $("#facts").append(foodResult);
 
@@ -303,7 +302,6 @@ function displayRecipe() {
 }
 
 function resetRecipe() {
-  $("#recipes").empty();
   $("#foodImage").empty();
   $("#facts").empty();
   optionSelected = [];
@@ -336,7 +334,7 @@ function dispRestaurant() {
   $.ajax({
     url: placesUrl,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     var resourceResponse = response.resourceSets[0].resources;
     console.log(resourceResponse);
 
@@ -348,11 +346,11 @@ function dispRestaurant() {
 
       var pOne = $("<p class='text-center'>").text(
         " Restaurant Name: " +
-          restName +
-          " | Address: " +
-          restAddy +
-          " | Phone: " +
-          restPhone
+        restName +
+        " | Address: " +
+        restAddy +
+        " | Phone: " +
+        restPhone
       );
       pOne.addClass("card card-body");
 

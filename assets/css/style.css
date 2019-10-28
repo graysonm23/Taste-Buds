@@ -305,18 +305,19 @@ textarea:focus {
   display: none;
   width: 200px;
 } */
-
-#recipeLink {
+/* Fix for the recipList hiding  */
+#recipeList {
   font-size: 21px;
+  position:relative;
+  top: -0.1em;
+  z-index:2; 
 }
 
 #dropdown {
   width: 10%;
 }
 /*--------------------------------- Recipe List  ----------------------------------*/
-#recipeList {
-  /* display: none; */
-}
+
 /*--------------------------------- Recipe List  ----------------------------------*/
 
 /* <!------------------------------------ Restaurant Info -----------------------------------> */

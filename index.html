@@ -61,85 +61,89 @@
 
   <!------------------------------------ Search Page ------------------------------------>
 
-        <!------------------------------- Zip Code input ---------->
+  <!------------------------------- Zip Code input ---------->
   <div class="search-page"></div>
   <div class="container search-items">
     <div class="row vh-100 justify-content-center searchBar">
       <div class="my-auto col-sm-8 col-md-8 col-lg-8 col-xl-8"></div>
-        <div class="my-auto input-group">
-          <i class="icon fas fa-2x fa-utensils" style="color: #27ae60;"></i></i><input type="text" class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input" placeholder="What dish inspires you?" autocomplete="off" required aria-label="Text input with dropdown button">
-          <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input" placeholder="What's your zipcode?" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+      <div class="my-auto input-group">
+        <i class="icon fas fa-2x fa-utensils" style="color: #27ae60;"></i></i><input type="text"
+          class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input"
+          placeholder="What dish inspires you?" autocomplete="off" required
+          aria-label="Text input with dropdown button">
+        <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input"
+          placeholder="What's your zipcode?"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
           required>
-          <div class="input-group-append dropdown-container">
-            <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
-            <div class="dropdown-menu">
-              <section id="dropDown">
-                <!-- Start Multiselect Drop down Hibah-->
-                <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
-                  searchable="Search here..">
-                  <option value="" disabled selected> Select Healthy Labels (Optional) </option>
-                  <option value="alcohol-free">Alcohol-Free</option>
-                  <option value="crustacean-free">Crustacean-Free</option>
-                  <option value="dairy-free">Dairy-Free</option>
-                  <option value="egg-free">Egg-Free</option>
-                  <option value="keto">Keto</option>
-                  <option value="vegetarian">Vegetarian</option>
-                  <option value="tree-nut-free">Tree-Nut-free</option>
-                </select>
-                <!-- Material unchecked -->
-                <div class="form-check"><ul id="">
-                    <li><input value="Alcohol-Free" type="checkbox" class="form-check-input healthLabels" id="">
+        <div class="input-group-append dropdown-container">
+          <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
+          <div class="dropdown-menu">
+            <section id="dropDown">
+              <!-- Start Multiselect Drop down Hibah-->
+              <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
+                searchable="Search here..">
+                <option value="" disabled selected> Select Healthy Labels (Optional) </option>
+                <option value="alcohol-free">Alcohol-Free</option>
+                <option value="crustacean-free">Crustacean-Free</option>
+                <option value="dairy-free">Dairy-Free</option>
+                <option value="egg-free">Egg-Free</option>
+                <option value="keto">Keto</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="tree-nut-free">Tree-Nut-free</option>
+              </select>
+              <!-- Material unchecked -->
+              <div class="form-check">
+                <ul id="">
+                  <li><input value="alcohol-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Alcohol-Free</label></li>
-                    <li><input value="Crustacean-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="crustacean-Free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Crustacean-Free</label></li>
-                    <li><input value="Dairy-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="dairy-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Dairy-Free</label></li>
-                    <li><input value="Egg-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="egg-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Egg-Free</label></li>
-                    <li><input value="Keto-Friendly" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="keto" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Keto-Friendly</label></li>
-                    <li><input value="Vegetarian" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="vegetarian" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Vegetarian</label></li>
-                    <li><input value="Tree-Nut-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="tree-nut-ree" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Tree-Nut-Free</label></li>
-                    </ul>
-                </div>
-                <div class="form-group row">
-                  <div class="col-5">
-                    <input class="form-control" type="number" id="calorie-input" />
-                  </div>
-                  <label for="example-number-input" class="col-2 col-form-label"
-                  >Max Calories</label
-                  >
-                  <!-- End of Calories input -->
-                </section>
-                <!--  End Multiselect Drop down -->
+                </ul>
               </div>
-            </div>
+              <div class="form-group row">
+                <div class="col-5">
+                  <input class="form-control" type="number" id="calorie-input" />
+                </div>
+                <label for="example-number-input" class="col-2 col-form-label">Max Calories</label>
+                <!-- End of Calories input -->
+            </section>
+            <!--  End Multiselect Drop down -->
           </div>
-          <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
         </div>
       </div>
+      <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
     </div>
-    
-    
-    <!--------------------------------------Recipe List with Divs---------------------------------->
-    <section id="recipeList">
-      <h2 style="color:black" ;>Testing Text</h2>
-      <!-- div for image -->
-      <div id=foodImage>
-  
-      </div>
-      <!-- div for calorie nutrition facts  image -->
-      <div id=facts>
-  
-      </div>
-  
-  
-    </section>
-  
-    <!--------------------------------------End of Recipe List with Divs---------------------------------->
-    ​
+  </div>
+  </div>
+
+
+  <!--------------------------------------Recipe List with Divs---------------------------------->
+  <section id="recipeList">
+    <h2></h2>
+    <!-- div for image -->
+    <div id=foodImage>
+
+    </div>
+    <!-- div for calorie nutrition facts -->
+    <div id=facts>
+
+    </div>
+
+  </section>
+
+  <!--------------------------------------End of Recipe List with Divs---------------------------------->
+  ​
   <!------------------------------------ How-To Video ----------------------------------->
 
 
@@ -166,9 +170,9 @@
     <img class="card-img-top" src="./assets/images/How-To-Video.svg" alt="places restaurants png">
     <div class="card" id="howToContainer">
       <!-- <div class="card-body" id="collapseExample"> -->
-        <!-- <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+      <!-- <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button> Commented out by Grayson-->
-        <!-- <div class="card" id="collapseExample"></div> -->
+      <!-- <div class="card" id="collapseExample"></div> -->
     </div>
   </div>
   ​
@@ -176,21 +180,21 @@
 
 
   <!------------------------------------ Restaurant Info ----------------------------------->
-  
-    <!-- <div class="card overflow-auto" id="collapseExamples"> -->
-      
-      <!-- <div class="card-body">
+
+  <!-- <div class="card overflow-auto" id="collapseExamples"> -->
+
+  <!-- <div class="card-body">
         <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExamples"
           aria-expanded="false" aria-controls="collapseExample" id="restaurantButton"></button>
         <div class="collapse" id="collapseExamples"></div>
       </div> -->
-    <!-- </div> -->
-    <div class="card overflow-auto restaurantContainer">
-      <img class="card-img-top" src="./assets/images/Places.svg" alt="places restaurants png">
-      <div class="card-body">
-        <div class="card overflow-auto" id="collapseExamples"></div>
-      </div>
+  <!-- </div> -->
+  <div class="card overflow-auto restaurantContainer">
+    <img class="card-img-top" src="./assets/images/Places.svg" alt="places restaurants png">
+    <div class="card-body">
+      <div class="card overflow-auto" id="collapseExamples"></div>
     </div>
+  </div>
   ​
   <!------------------------------------ Restaurant Info ----------------------------------->
 
