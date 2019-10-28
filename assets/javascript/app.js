@@ -80,7 +80,7 @@ $("#searchBtn").on("click", function(event) {
   //This line will empty the textbox so user doesn't need to delete contents after every submission
   $("#search-input").val("");
   //This line will clear the container holding the youTube video when user searches for a new food item
-  $("#collapseExample").empty();
+  $("#howToContainer").empty();
   //This local variable holds the google api key used for requesting youtube data
   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
 
@@ -109,7 +109,7 @@ $("#searchBtn").on("click", function(event) {
     //This line will give div a class for bootstrap and an id for custom css use
     youTubeVideo.addClass("card card-body").attr("id", "videoContainer");
     //This line will place the div inside the collapsible container
-    $("#collapseExample").append(youTubeVideo);
+    $("#howToContainer").append(youTubeVideo);
     //This line will place the user search videoId with the most relevance inside cookVideo variable
     cookVideo =
       "https://www.youtube.com/embed/" + response.items[0].id.videoId + "";
@@ -142,7 +142,7 @@ function displayYouTubeVideo() {
   );
 
   //This line will change the text of the button to what the user searches for
-  $("#cookButton").text("How to make " + userInput + " video!");
+  // $("#cookButton").text("How to make " + userInput + " video!"); Commented out by Grayson
   //This line displays recipe container
   $("#recipeList").show();
 }
