@@ -5,15 +5,12 @@ let modal = $("#myModal");
 
 $(modal).hide();
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
 });
 //--------------------------------Welcome page------------------------------------//
-
-
-
 
 // var zipPage = $(".zip-page");
 // var zipBtn = $("#zipBtn");
@@ -26,21 +23,19 @@ $(openingBtn).on("click", function () {
 //   $(zipBtn).show();
 // });
 
-
-
-
-
-
 //--------------------------------Search page------------------------------------//
 var searchPage = $(".search-page");
 var searchBtn = $("#searchBtn");
+var searchItems = $(".search-items");
 
 $(searchBtn).hide();
 $(searchPage).hide();
+$(searchItems).hide();
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(searchPage).show();
   $(searchBtn).show();
+  $(searchItems).show();
 });
 
 //--------------------------------Search page------------------------------------//
@@ -51,10 +46,12 @@ $(openingBtn).on("click", function () {
 $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function (event) {
+$("#searchBtn").on("click", function(event) {
   //grayson's change----testing
-  $("#search-input").addClass("searchBar-move");
-  $("#searchBtn").addClass("searchBtn-move");
+  $(".row").addClass("opacity");
+  $(".row").removeClass("vh-100");
+  $(".row").removeClass("opacity");
+  $(".row").addClass("fadeIn");
 
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
@@ -68,8 +65,8 @@ $("#searchBtn").on("click", function (event) {
   dispRestaurant();
   //Calls function to hide restaurant display
   hideRest();
-  //shows the ID for the recipe list 
-  $("#recipeList").show()
+  //shows the ID for the recipe list
+  $("#recipeList").show();
   //shows restaurant container
 
   //This line makes an empty variable to hold the search
@@ -99,7 +96,7 @@ $("#searchBtn").on("click", function (event) {
   $.ajax({
     url: youTubeUrl,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
@@ -134,7 +131,9 @@ function displayYouTubeVideo() {
   //Show restaurants nearby container
   // $('#restaurantContainer').show()
   //Changes text on button
-  $("#restaurantButton").text("Restaurants nearby that serve " + userInput + "!");
+  $("#restaurantButton").text(
+    "Restaurants nearby that serve " + userInput + "!"
+  );
 
   //This line will change the text of the button to what the user searches for
   $("#cookButton").text("How to make " + userInput + " video!");
@@ -157,20 +156,20 @@ function displayYouTubeVideo() {
 //   $("#recipeList").show();
 // });
 
-
-
-//START - DO NOT REMOVE PLEASE -- HIbah 
+//START - DO NOT REMOVE PLEASE -- HIbah
 
 var optionSelected = [];
 
 function displayRecipe() {
   $("#recipeList").show();
-  var dish = $("#search-input").val().trim();
+  var dish = $("#search-input")
+    .val()
+    .trim();
   //var dish = "chicken";
   var calorieMAX = $("#calorie-input").val();
 
   //console.log($("#healthLabels").val());
-  //creating the array with health option 
+  //creating the array with health option
   var optionSelected = $("#healthLabels").val();
   //console.log(optionSelected);
   var parameter = "";
@@ -188,13 +187,16 @@ function displayRecipe() {
   var queryURL =
     "https://api.edamam.com/search?q=" +
     dish +
-    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=1&calories=0-" + calorieMAX + parameter + "";
+    "&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=1&calories=0-" +
+    calorieMAX +
+    parameter +
+    "";
   // var queryURL =
   //   "https://api.edamam.com/search?q=chicken&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000&" + parameter + "";
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     console.log(queryURL);
     // storing the data from the AJAX request in the results variable
@@ -213,22 +215,48 @@ function displayRecipe() {
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
 
       $("#foodImage").append(foodImage);
-      //append title to h2 
+      //append title to h2
       $("h2").text(results[i].recipe.label);
-      //for each info need to add title 
+      //for each info need to add title
       // foodResult.append("<p id=label><span class='title'>Recipe Name: </span> <br>" + results[i].recipe.label + "</p>");
       var recipeURL = results[i].recipe.url;
-      foodResult.append("<a href=" + recipeURL + " target='_blank' id='recipeLink'> " + "Link to the Recipe" + "</a > ");
-      console.log("<a href=" + recipeURL + ">")
-      foodResult.append("<p id=caloriesForDish><span class='title'>Total Calories: </span> <br>" + Math.round(results[i].recipe.calories) + "</p>");
-      foodResult.append("<p id=serving><span class='title'>Servings: </span> <br>" + results[i].recipe.yield + "</p>");
-      foodResult.append("<ol id=groceryList" + i + "><span class='title'>Ingredients </span> <br> </ol>");
+      foodResult.append(
+        "<a href=" +
+          recipeURL +
+          " target='_blank' id='recipeLink'> " +
+          "Link to the Recipe" +
+          "</a > "
+      );
+      console.log("<a href=" + recipeURL + ">");
+      foodResult.append(
+        "<p id=caloriesForDish><span class='title'>Total Calories: </span> <br>" +
+          Math.round(results[i].recipe.calories) +
+          "</p>"
+      );
+      foodResult.append(
+        "<p id=serving><span class='title'>Servings: </span> <br>" +
+          results[i].recipe.yield +
+          "</p>"
+      );
+      foodResult.append(
+        "<ol id=groceryList" +
+          i +
+          "><span class='title'>Ingredients </span> <br> </ol>"
+      );
       caloriePerServing = parseInt(kCal / serving);
-      foodResult.append("<p id=calories><span class='title'>Calories Per Serving:</span> <br>" + caloriePerServing + "<p>");
-      foodResult.append("<ul id=healthTags" + i + "><span class='title'>Health Labels </span> <br> </ul>");
+      foodResult.append(
+        "<p id=calories><span class='title'>Calories Per Serving:</span> <br>" +
+          caloriePerServing +
+          "<p>"
+      );
+      foodResult.append(
+        "<ul id=healthTags" +
+          i +
+          "><span class='title'>Health Labels </span> <br> </ul>"
+      );
       $("#facts").append(foodResult);
 
-      //DO NOT REMOVE 
+      //DO NOT REMOVE
 
       // Commented out table format
       // var foodResult = $("<div>");
@@ -273,73 +301,73 @@ function resetRecipe() {
   $("#foodImage").empty();
   $("#facts").empty();
   optionSelected = [];
-
 }
 
-
-//END - DO NOT REMOVE PLEASE -- Hibah 
+//END - DO NOT REMOVE PLEASE -- Hibah
 //-------------------------------- Recipes ------------------------------------//
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
 
-
-$('#restaurantContainer').hide()
+$("#restaurantContainer").hide();
 
 function dispRestaurant() {
-
-  var foodChoice = $("#search-input").val().toLowerCase().trim();
+  var foodChoice = $("#search-input")
+    .val()
+    .toLowerCase()
+    .trim();
   var foodChoiceNoSpace = foodChoice.replace(/\s/g, "");
-  userLocation = $("#zip-input").val()
-  var placesUrl = "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" + foodChoiceNoSpace + "in%20" + userLocation + "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
+  userLocation = $("#zip-input").val();
+  var placesUrl =
+    "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" +
+    foodChoiceNoSpace +
+    "in%20" +
+    userLocation +
+    "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
+  $("#restaurantContainer").show();
 
-  $('#restaurantContainer').show()
-
-  $('#collapseExamples').empty()
+  $("#collapseExamples").empty();
   $.ajax({
     url: placesUrl,
     method: "GET"
-  }).then(function (response) {
-    var resourceResponse = response.resourceSets[0].resources
-    console.log(resourceResponse)
+  }).then(function(response) {
+    var resourceResponse = response.resourceSets[0].resources;
+    console.log(resourceResponse);
 
     for (var i = 0; i < resourceResponse.length; i++) {
-
-
       var restData = $("<div id='restaurant'>");
       var restName = resourceResponse[i].name;
       var restAddy = resourceResponse[i].Address.formattedAddress;
       var restPhone = resourceResponse[i].PhoneNumber;
 
-      var pOne = $("<p class='text-center'>").text(" Restaurant Name: " + restName + " | Address: " + restAddy + " | Phone: " + restPhone);
-      pOne.addClass("card card-body")
+      var pOne = $("<p class='text-center'>").text(
+        " Restaurant Name: " +
+          restName +
+          " | Address: " +
+          restAddy +
+          " | Phone: " +
+          restPhone
+      );
+      pOne.addClass("card card-body");
 
-      restData.append(pOne)
+      restData.append(pOne);
       $("#collapseExamples").append(restData);
-
     }
 
     // food choice selected has no nearby restaurants serving it
     if (resourceResponse.length === 0) {
-      $("#restaurantButton").text("NO restaurants nearby serve " + userInput + "!");
-
+      $("#restaurantButton").text(
+        "NO restaurants nearby serve " + userInput + "!"
+      );
     }
-
-
-  })
+  });
 }
 
 function hideRest() {
   // user doesn't input zip code
-  if (userLocation === '') {
-    $('#restaurantContainer').hide()
+  if (userLocation === "") {
+    $("#restaurantContainer").hide();
   }
 }
 
-
-
-
-
 //-------------------------------- Restaurant ------------------------------------//
-
-
