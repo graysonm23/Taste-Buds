@@ -41,7 +41,7 @@ $(openingBtn).on("click", function() {
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //This line hides the container holding the youtube video
-$("#howToContainer").hide();
+$(".how-to-video").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function(event) {
@@ -90,8 +90,6 @@ $("#searchBtn").on("click", function(event) {
   }
   //Graysons' input
 
-  //This line will call the displayYouTubeVideo function to display video searched
-  displayYouTubeVideo();
   //This local variable holds the queryUrl used from youTube along with search parameters
   var youTubeUrl =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=how+to+make+" +
@@ -127,12 +125,14 @@ $("#searchBtn").on("click", function(event) {
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
   });
+  //This line will call the displayYouTubeVideo function to display video searched
+  displayYouTubeVideo();
 });
 
 //This function will display the youTube video
 function displayYouTubeVideo() {
   //This line will display the container holding the button and embedded youTube video
-  $("#howToContainer").show();
+  $(".how-to-video").show();
 
   //Show restaurants nearby container
   $("#collapseExamples").show();
