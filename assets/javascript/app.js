@@ -1,4 +1,16 @@
-//--------------------------------Welcome page------------------------------------
+//----------------------------Loading Animation-----------------------------------//
+$(".lds-hourglass").hide();
+$(document).on({
+  ajaxStart: function() {
+    $(".lds-hourglass").show();
+  },
+  ajaxStop: function() {
+    $(".lds-hourglass").hide();
+  }
+});
+//----------------------------Loading Animation-----------------------------------//
+
+//--------------------------------Welcome page------------------------------------//
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 let modal = $("#myModal");
@@ -47,14 +59,15 @@ $("#howToContainer").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function(event) {
-  //grayson's change----testing
+  //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
+  event.preventDefault();
+
+  //grayson's change----working
   $(".row").addClass("opacity");
   $(".row").removeClass("vh-100");
   $(".row").removeClass("opacity");
   $(".row").addClass("fadeIn");
 
-  //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
-  event.preventDefault();
   //DO NOT REMOVE - HIBAH
   $("#recipeList").show();
   //DO NOT REMOVE - HIBAH
