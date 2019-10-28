@@ -181,9 +181,6 @@ div.search-page {
   color: white;
 }
 
-/* .search-items {
-} */
-
 input[type="text"],
 textarea {
   background-color: rgb(0, 0, 0); /* Fallback color */
@@ -224,7 +221,7 @@ textarea:focus {
 
 #searchBtn {
   background: #27ae60;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 #searchBtn:hover {

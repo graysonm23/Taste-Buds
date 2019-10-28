@@ -13,9 +13,6 @@ $(document).on({
 //--------------------------------Welcome page------------------------------------//
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
-let modal = $("#myModal");
-
-$(modal).hide();
 
 $(openingBtn).on("click", function() {
   $(openingPage).hide();
@@ -23,17 +20,6 @@ $(openingBtn).on("click", function() {
   $(openingBtn).attr("disabled", "disabled");
 });
 //--------------------------------Welcome page------------------------------------//
-
-// var zipPage = $(".zip-page");
-// var zipBtn = $("#zipBtn");
-
-// $(zipBtn).hide();
-// $(zipPage).hide();
-
-// $(openingBtn).on("click", function () {
-//   // $(zipPage).show();
-//   $(zipBtn).show();
-// });
 
 //--------------------------------Search page------------------------------------//
 var searchPage = $(".search-page");
