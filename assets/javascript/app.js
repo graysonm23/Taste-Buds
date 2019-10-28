@@ -84,6 +84,13 @@ $("#searchBtn").on("click", function(event) {
   $("#collapseExample").empty();
   //This local variable holds the google api key used for requesting youtube data
   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
+
+  //Graysons' input
+  if (userInput === "") {
+    return false;
+  }
+  //Graysons' input
+
   //This line will call the displayYouTubeVideo function to display video searched
   displayYouTubeVideo();
   //This local variable holds the queryUrl used from youTube along with search parameters
