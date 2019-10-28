@@ -62,47 +62,47 @@
   <!------------------------------------ Search Page ------------------------------------>
 
         <!------------------------------- Zip Code input ---------->
-        <div class="search-page"></div>
-        <div class="container search-items">
-          <div class="row vh-100 justify-content-center searchBar">
-            <div class="my-auto col-sm-8 col-md-8 col-lg-8 col-xl-8"></div>
-              <div class="my-auto input-group">
-                <input type="text" class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input" placeholder="What dish inspires you?" autocomplete="off" required aria-label="Text input with dropdown button">
-                <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input" placeholder="What's your zipcode?" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-                required>
-                <div class="input-group-append dropdown-container">
-                  <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
-                  <div class="dropdown-menu">
-                    <section id="dropDown">
-                      <!-- Start Multiselect Drop down Hibah-->
-                      <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
-                        searchable="Search here..">
-                        <option value="" disabled selected> Select Healthy Labels (Optional) </option>
-                        <option value="alcohol-free">Alcohol-Free</option>
-                        <option value="crustacean-free">Crustacean-Free</option>
-                        <option value="dairy-free">Dairy-Free</option>
-                        <option value="egg-free">Egg-Free</option>
-                        <option value="keto">Keto</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="tree-nut-free">Tree-Nut-free</option>
-                      </select>
-                      <div class="form-group row">
-                        <div class="col-5">
-                          <input class="form-control" type="number" id="calorie-input" />
-                        </div>
-                        <label for="example-number-input" class="col-2 col-form-label"
-                        >Max Calories</label
-                        >
-                        <!-- End of Calories input -->
-                      </section>
-                      <!--  End Multiselect Drop down -->
+  <div class="search-page"></div>
+  <div class="container search-items">
+    <div class="row vh-100 justify-content-center searchBar">
+      <div class="my-auto col-sm-8 col-md-8 col-lg-8 col-xl-8"></div>
+        <div class="my-auto input-group">
+          <input type="text" class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input" placeholder="What dish inspires you?" autocomplete="off" required aria-label="Text input with dropdown button">
+          <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input" placeholder="What's your zipcode?" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+          required>
+          <div class="input-group-append dropdown-container">
+            <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
+            <div class="dropdown-menu">
+              <section id="dropDown">
+                <!-- Start Multiselect Drop down Hibah-->
+                <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
+                  searchable="Search here..">
+                  <option value="" disabled selected> Select Healthy Labels (Optional) </option>
+                  <option value="alcohol-free">Alcohol-Free</option>
+                  <option value="crustacean-free">Crustacean-Free</option>
+                  <option value="dairy-free">Dairy-Free</option>
+                  <option value="egg-free">Egg-Free</option>
+                  <option value="keto">Keto</option>
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="tree-nut-free">Tree-Nut-free</option>
+                </select>
+                <div class="form-group row">
+                  <div class="col-5">
+                    <input class="form-control" type="number" id="calorie-input" />
                   </div>
-                </div>
-              </div>
-              <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
+                  <label for="example-number-input" class="col-2 col-form-label"
+                  >Max Calories</label
+                  >
+                  <!-- End of Calories input -->
+              </section>
+                <!--  End Multiselect Drop down -->
             </div>
           </div>
         </div>
+        <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
+      </div>
+    </div>
+  </div>
 
         
   ​
