@@ -135,7 +135,7 @@ function displayYouTubeVideo() {
   $("#howToContainer").show();
 
   //Show restaurants nearby container
-  $("#restaurantContainer").show();
+  $("#collapseExamples").show();
   //Changes text on button
   $("#restaurantButton").text(
     "Restaurants nearby that serve " + userInput + "!"
@@ -314,7 +314,7 @@ function resetRecipe() {
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
 
-$("#restaurantContainer").hide();
+$(".restaurantContainer").hide();
 
 function dispRestaurant() {
   var foodChoice = $("#search-input")
@@ -330,7 +330,7 @@ function dispRestaurant() {
     userLocation +
     "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
-  $("#restaurantContainer").show();
+  // $(".restaurantContainer").show();
 
   $("#collapseExamples").empty();
   $.ajax({
@@ -366,13 +366,14 @@ function dispRestaurant() {
         "NO restaurants nearby serve " + userInput + "!"
       );
     }
+    $(".restaurantContainer").show();
   });
 }
 
 function hideRest() {
   // user doesn't input zip code
   if (userLocation === "") {
-    $("#restaurantContainer").hide();
+    $("#collapseExamples").hide();
   }
 }
 
