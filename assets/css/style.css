@@ -264,7 +264,7 @@ textarea:focus {
   background-color: transparent;
   background-color: transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  display: inline-block;
+  /* display: inline-block; */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
   max-width: 45%;
@@ -326,27 +326,20 @@ textarea:focus {
   color: white;
 }
 
-#caloriesForDish {
-}
-
-#serving {
-}
-
-#groceryList0 {
-}
-
-#foodImage {
-}
-
 #recipeLink {
   font-size: 21px;
+  position: relative;
+  top: -0.1em;
+  z-index: 2;
 }
 
 #dropdown {
   width: 10%;
 }
 /*--------------------------------- Recipe List  ----------------------------------*/
-#re
+
+/*--------------------------------- Recipe List  ----------------------------------*/
+
 /*--------------------------------- Recipe List  ----------------------------------*/
 
 /* <!------------------------------------ Restaurant Info -----------------------------------> */
@@ -393,9 +386,6 @@ textarea:focus {
 .col-sm-6 {
   max-height: 600px;
   overflow: auto;
-}
-
-.card-body {
 }
 
 #collapseExamples p {

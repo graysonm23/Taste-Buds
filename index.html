@@ -3,20 +3,20 @@
 
 <head>
   <!-- Required meta tags -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   ​
   <!-- Bootstrap CDN Here -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Welcome Page Font, Font Awesome Icons, and Bulma CSS Framework -->
-  <link href="https://fonts.googleapis.com/css?family=Courgette|Yellowtail&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Yellowtail&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- Custom CSS overrides Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
   ​
   <title>Taste Buds</title>
 </head>
@@ -62,65 +62,68 @@
 
   <!------------------------------------ Search Page ------------------------------------>
 
-        <!------------------------------- Zip Code input ---------->
+  <!------------------------------- Zip Code input ---------->
   <div class="search-page"></div>
   <div class="container search-items">
     <div class="row vh-100 justify-content-center searchBar">
       <div class="my-auto col-sm-8 col-md-8 col-lg-8 col-xl-8"></div>
-        <div class="my-auto input-group">
-          <i class="icon fas fa-2x fa-utensils" style="color: #27ae60;"></i></i><input type="text" class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input" placeholder="What dish inspires you?" autocomplete="off" required aria-label="Text input with dropdown button">
-          <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input" placeholder="What's your zipcode?" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+      <div class="my-auto input-group">
+        <i class="icon fas fa-2x fa-utensils" style="color: #27ae60;"></i></i><input type="text"
+          class="form-control col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" id="search-input"
+          placeholder="What dish inspires you?" autocomplete="off" required
+          aria-label="Text input with dropdown button">
+        <input type="text" class="form-control col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="zip-input"
+          placeholder="What's your zipcode?"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
           required>
-          <div class="input-group-append dropdown-container">
-            <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
-            <div class="dropdown-menu">
-              <section id="dropDown">
-                <!-- Start Multiselect Drop down Hibah-->
-                <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
-                  searchable="Search here..">
-                  <option value="" disabled selected> Select Healthy Labels (Optional) </option>
-                  <option value="alcohol-free">Alcohol-Free</option>
-                  <option value="crustacean-free">Crustacean-Free</option>
-                  <option value="dairy-free">Dairy-Free</option>
-                  <option value="egg-free">Egg-Free</option>
-                  <option value="keto">Keto</option>
-                  <option value="vegetarian">Vegetarian</option>
-                  <option value="tree-nut-free">Tree-Nut-free</option>
-                </select>
-                <!-- Material unchecked -->
-                <div class="form-check"><ul id="">
-                    <li><input value="Alcohol-Free" type="checkbox" class="form-check-input healthLabels" id="">
+        <div class="input-group-append dropdown-container">
+          <button class="btn btn-outline-secondary btn-success dropdown-toggle" id="dietBtn" type="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Diets?</button>
+          <div class="dropdown-menu">
+            <section id="dropDown">
+              <!-- Start Multiselect Drop down Hibah-->
+              <select class="mdb-select colorful-select dropdown-primary md-form" id="healthLabels" multiple
+                searchable="Search here..">
+                <option value="" disabled selected> Select Healthy Labels (Optional) </option>
+                <option value="alcohol-free">Alcohol-Free</option>
+                <option value="crustacean-free">Crustacean-Free</option>
+                <option value="dairy-free">Dairy-Free</option>
+                <option value="egg-free">Egg-Free</option>
+                <option value="keto">Keto</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="tree-nut-free">Tree-Nut-free</option>
+              </select>
+              <!-- Material unchecked -->
+              <div class="form-check">
+                <ul id="">
+                  <li><input value="alcohol-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Alcohol-Free</label></li>
-                    <li><input value="Crustacean-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="crustacean-Free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Crustacean-Free</label></li>
-                    <li><input value="Dairy-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="dairy-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Dairy-Free</label></li>
-                    <li><input value="Egg-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="egg-free" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Egg-Free</label></li>
-                    <li><input value="Keto-Friendly" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="keto" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Keto-Friendly</label></li>
-                    <li><input value="Vegetarian" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="vegetarian" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Vegetarian</label></li>
-                    <li><input value="Tree-Nut-Free" type="checkbox" class="form-check-input healthLabels" id="">
+                  <li><input value="tree-nut-ree" type="checkbox" class="form-check-input healthLabels" id="">
                     <label class="form-check-label" for="materialUnchecked">Tree-Nut-Free</label></li>
-                    </ul>
-                </div>
-                <div class="form-group row">
-                  <div class="col-5">
-                    <input class="form-control" type="number" id="calorie-input" />
-                  </div>
-                  <label for="example-number-input" class="col-2 col-form-label"
-                  >Max Calories</label
-                  >
-                  <!-- End of Calories input -->
-                </section>
-                <!--  End Multiselect Drop down -->
+                </ul>
               </div>
-            </div>
+              <div class="form-group row">
+                <div class="col-5">
+                  <input class="form-control" type="number" id="calorie-input" />
+                </div>
+                <label for="example-number-input" class="col-2 col-form-label">Max Calories</label>
+                <!-- End of Calories input -->
+            </section>
+            <!--  End Multiselect Drop down -->
           </div>
-          <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
         </div>
       </div>
+      <button type="button" id="searchBtn" class="my-auto btn btn-success">Get me flavor!</button>
     </div>
     
     
