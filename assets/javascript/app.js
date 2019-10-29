@@ -116,8 +116,8 @@ $("#searchBtn").on("click", function(event) {
       .attr("src", cookVideo)
       .attr("allowFullscreen", "true")
       .attr("frameBorder", "0")
-      .attr("width", "560")
-      .attr("height", "315")
+      .attr("width", "100%")
+      .attr("height", "360px")
       .attr(
         "allow",
         "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -222,11 +222,12 @@ function displayRecipe() {
 
       $("#foodImage").append(foodImage);
       //append title to h2
-      $("h2").text(results[i].recipe.label);
+      $(".recipeName").text(results[i].recipe.label);
       //for each info need to add title
       // foodResult.append("<p id=label><span class='title'>Recipe Name: </span> <br>" + results[i].recipe.label + "</p>");
       var recipeURL = results[i].recipe.url;
-      foodResult.append(
+      var ingredients = $(".ingredients");
+      ingredients.append(
         "<a href=" +
           recipeURL +
           " target='_blank' id='recipeLink'> " +
@@ -234,33 +235,34 @@ function displayRecipe() {
           "</a > "
       );
       console.log("<a href=" + recipeURL + ">");
-      foodResult.append(
-        "<p id=caloriesForDish><span class='title'>Total Calories: </span> <br>" +
+      ingredients.append(
+        "<p id=caloriesForDish><span class='title'>Total Calories</span> <br>" +
           Math.round(results[i].recipe.calories) +
           "</p>"
       );
-      foodResult.append(
-        "<p id=serving><span class='title'>Servings: </span> <br>" +
+      ingredients.append(
+        "<p id=serving><span class='title'>Serving Size</span> <br>" +
           results[i].recipe.yield +
           "</p>"
       );
       foodResult.append(
         "<ol id=groceryList" +
           i +
-          "><span class='title'>Ingredients </span> <br> </ol>"
+          "><span class='title'>Ingredients</span> <br> </ol>"
       );
       caloriePerServing = parseInt(kCal / serving);
       foodResult.append(
-        "<p id=calories><span class='title'>Calories Per Serving:</span> <br>" +
+        "<p id=calories><span class='title'>Calories Per Serving</span> <br>" +
           caloriePerServing +
           "<p>"
       );
       foodResult.append(
         "<ul id=healthTags" +
           i +
-          "><span class='title'>Health Labels </span> <br> </ul>"
+          "><span class='title'>Health Labels</span> <br> </ul>"
       );
       $("#facts").append(foodResult);
+      console.log(foodResult);
 
       //DO NOT REMOVE
 
@@ -367,6 +369,12 @@ function dispRestaurant() {
       );
     }
     $(".restaurantContainer").show();
+    window.sr = ScrollReveal();
+    sr.reveal(".card", {
+      duration: 2000,
+      origin: "left",
+      distance: "300px"
+    });
   });
 }
 

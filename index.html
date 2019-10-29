@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="sr" lang="en">
 
 <head>
   <!-- Required meta tags -->
@@ -16,6 +16,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- Custom CSS overrides Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
   ​
   <title>Taste Buds</title>
 </head>
@@ -124,20 +125,29 @@
     
     
     <!--------------------------------------Recipe List with Divs---------------------------------->
-    <section id="recipeList">
-      <h2 style="color:black" ;>Testing Text</h2>
-      <!-- div for image -->
-      <div id=foodImage>
-  
+  <section id="recipeList">
+    <div class="recipeName"></div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card image-container">
+          <img class="card-img-top" src="./assets/images/Dish.svg" alt="places restaurants png">
+          <div class="card-body ingredients" id="foodImage">
+            <p class="card-text"></p>
+          </div>
+        </div>
       </div>
-      <!-- div for calorie nutrition facts  image -->
-      <div id=facts>
-  
+      <div class="col-sm-6">
+        <div class="card ingredients-card">
+          <img class="card-img-top" src="./assets/images/Contents.svg" alt="places restaurants png">
+          <div class="card-body overflow-auto">
+            <h2 class="card-title"></h2>
+            <p class="card-text overflow-auto" id="facts"></p>
+          </div>
+        </div>
       </div>
-  
-  
-    </section>
-  
+    </div>
+  </section>
+
     <!--------------------------------------End of Recipe List with Divs---------------------------------->
     ​
   <!------------------------------------ How-To Video ----------------------------------->
@@ -162,36 +172,37 @@
   <!------------------------------------Search Page----------------------------------->
   ​
   <!------------------------------------ How-To Video ----------------------------------->
-  <div class="card how-to-video">
-    <img class="card-img-top" src="./assets/images/How-To-Video.svg" alt="places restaurants png">
-    <div class="card" id="howToContainer">
-      <!-- <div class="card-body" id="collapseExample"> -->
-        <!-- <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-          aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button> Commented out by Grayson-->
-        <!-- <div class="card" id="collapseExample"></div> -->
-    </div>
-  </div>
-  ​
-  <!------------------------------------ How-To Video ----------------------------------->
-
-
-  <!------------------------------------ Restaurant Info ----------------------------------->
-  
-    <!-- <div class="card overflow-auto" id="collapseExamples"> -->
-      
-      <!-- <div class="card-body">
-        <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExamples"
-          aria-expanded="false" aria-controls="collapseExample" id="restaurantButton"></button>
-        <div class="collapse" id="collapseExamples"></div>
-      </div> -->
-    <!-- </div> -->
-    <div class="card overflow-auto restaurantContainer">
-      <img class="card-img-top" src="./assets/images/Places.svg" alt="places restaurants png">
-      <div class="card-body">
-        <div class="card overflow-auto" id="collapseExamples"></div>
+  <div class="row">
+    <div class="card how-to-video">
+      <img class="card-img-top" src="./assets/images/How-To-Video.svg" alt="places restaurants png">
+      <div class="card" id="howToContainer">
+        <!-- <div class="card-body" id="collapseExample"> -->
+          <!-- <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample" id="cookButton"></button> Commented out by Grayson-->
+          <!-- <div class="card" id="collapseExample"></div> -->
       </div>
     </div>
-  ​
+    ​
+    <!------------------------------------ How-To Video ----------------------------------->
+
+
+    <!------------------------------------ Restaurant Info ----------------------------------->
+    
+      <!-- <div class="card overflow-auto" id="collapseExamples"> -->
+        
+        <!-- <div class="card-body">
+          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExamples"
+            aria-expanded="false" aria-controls="collapseExample" id="restaurantButton"></button>
+          <div class="collapse" id="collapseExamples"></div>
+        </div> -->
+      <!-- </div> -->
+      <div class="card overflow-auto restaurantContainer">
+        <img class="card-img-top" src="./assets/images/Places.svg" alt="places restaurants png">
+        <div class="card-body">
+          <div class="card overflow-auto" id="collapseExamples"></div>
+        </div>
+      </div>
+  ​</div>
   <!------------------------------------ Restaurant Info ----------------------------------->
 
 
@@ -206,8 +217,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-
 
   <!-- Logic JavaScript link here -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
