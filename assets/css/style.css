@@ -1,8 +1,8 @@
 /*---------------------------------Welcome page-------------------------------------*/
 #imageWP {
   background-image: url(https://cdn.pixabay.com/photo/2017/08/05/21/34/chef-2585791_1280.jpg);
-  -webkit-animation: kenburns-top 30s ease-in alternate-reverse backwards;
-  animation: kenburns-top 30s ease-in alternate-reverse backwards;
+  -webkit-animation: kenburns-top 50s ease-in alternate-reverse backwards;
+  animation: kenburns-top 50s ease-in alternate-reverse backwards;
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@ div.welcome-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100%;
   transition: 1s;
 }
 
@@ -94,6 +94,7 @@ div.welcome-page {
   cursor: pointer;
   transition: 0.8s;
   overflow: hidden;
+  color: white;
 }
 
 #openingBtn:hover {
@@ -106,17 +107,62 @@ div.welcome-page {
 /* .fadeOut {
   opacity: 0;
   pointer-events: none;
-}
+}*/
 
 .fadeIn {
   opacity: 1;
-  pointer-events: all;
-} */
+  animation-name: angry-animation;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  transition: 1s;
+  animation-fill-mode: forwards;
+}
 /*----------------------------------------------Welcome Page-------------------------------------------------------*/
+/*--------------------------------------------Loading Animation-------------------------------------------------*/
+.lds-hourglass {
+  display: inline-block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 5;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
 
+/*--------------------------------------------Loading Animation-------------------------------------------------*/
 /*--------------------------------- Search page -----------------------------------*/
 div.search-page {
-  background-image: url(https://images.pexels.com/photos/1030865/pexels-photo-1030865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url(https://images.pexels.com/photos/1030865/pexels-photo-1030865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -124,23 +170,78 @@ div.search-page {
   height: 100%;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-#search-input {
+#dropDown {
   color: white;
-  max-height: 60%;
-  max-width: 100%;
+}
+
+.fa-utensils {
+  margin-right: 10px;
+}
+
+.dropdown-menu {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
-  font-size: 80px;
-  padding: 50px;
-  text-indent: 20px;
-  overflow-x: auto;
-  font-family: "Yellowtail", cursive;
+  color: white;
+}
+
+input[type="text"],
+textarea {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+}
+
+::placeholder {
+  mix-blend-mode: exclusion;
+  /* color: white; */
+}
+
+.form-control:focus {
+  border-color: #27ae60;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #27ae60;
+}
+
+.opacity {
+  opacity: 0;
+}
+
+#dietBtn {
+  color: white;
+  background: #27ae60;
+}
+
+#dietBtn:hover {
+  color: #27ae60;
+  background: white;
+  transition: 0.8s;
+}
+
+#searchBtn {
+  background: #27ae60;
+  margin-top: 0px;
+}
+
+#searchBtn:hover {
+  color: #27ae60;
+  background: white;
+  transition: 0.8s;
+}
+/*--------------------------------- Search page -----------------------------------*/
+/*--------------------------------- How-To Video ----------------------------------*/
+
+#videoContainer {
+  margin: 5px;
+  background-color: transparent;
+  background-color: transparent;
   animation-name: angry-animation;
   animation-duration: 3s;
   animation-timing-function: ease;
@@ -151,107 +252,46 @@ div.search-page {
   animation-fill-mode: forwards;
 }
 
-#search-input:focus {
-  outline: none;
-}
-
-.searchBar-move {
-  /* display: block; */
-  position: absolute;
-  animation: 1s;
-  height: 10%;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.searchBtn-move {
+#videoContainer:hover {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  box-shadow: 20px 20px 2px rgba(0, 0, 0, 0.5);
   position: relative;
-  display: inline-block;
-  top: 20%;
+  top: -0.1em;
+  z-index: 2;
+  transition: 0.5s ease 0.5s;
 }
 
-#searchBtn {
-  display: block;
-  position: absolute;
-  /* bottom: 10%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #27ae60;
-  cursor: pointer;
-  transition: 0.8s;
-  overflow: hidden;
-}
-#searchBtn:hover {
-  color: #27ae60;
-  background: white;
-  color: #27ae60;
-  transition: 0.8s;
-}
-/*--------------------------------- Search page -----------------------------------*/
-/*--------------------------------- How-To Video ----------------------------------*/
 #howToContainer {
+  margin: 5px;
+  background-color: transparent;
+  background-color: transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   display: inline-block;
 }
 /*--------------------------------- How-To Video ----------------------------------*/
 /*--------------------------------- Recipe List  ----------------------------------*/
 
-#recipeList {
+/* Commented it out to test if I can see the recipe results - Hibah */
+/* #recipeList {
   display: none;
   width: 200px;
+} */
+
+#recipeLink {
+  font-size: 21px;
 }
 
 #dropdown {
-  width:10%; 
+  width: 10%;
 }
 /*--------------------------------- Recipe List  ----------------------------------*/
 
-@media screen and (max-width: 882px) {
-  #search-input {
-    font-size: 70px;
-  }
-}
-
-@media screen and (max-width: 743px) {
-  #search-input {
-    font-size: 60px;
-  }
-}
-
-@media screen and (max-width: 653px) {
-  #search-input {
-    font-size: 50px;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  #search-input {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  #search-input {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  #search-input {
-    font-size: 30px;
-  }
-}
-
-@media screen and (max-width: 345px) {
-  #search-input {
-    font-size: 30px;
-  }
-}
 /*--------------------------------- Recipe List  ----------------------------------*/
-
 
 /* <!------------------------------------ Restaurant Info -----------------------------------> */
-
 
 /* <!------------------------------------ Restaurant Info -----------------------------------> */
