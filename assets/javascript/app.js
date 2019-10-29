@@ -61,13 +61,6 @@ $("#searchBtn").on("click", function(event) {
   displayRecipe();
   //Calls restaurant API to display restaurants nearby
   dispRestaurant();
-  //Calls function to hide restaurant display
-  // hideRest();
-  //This line empties out the container hilding recipe url iframe (Emir add)
-  // $("#urlWindowBox").empty();
-  //shows the ID for the recipe list
-  // hibah  $("#recipeList").show();
-  //shows restaurant container
 
   //This line makes an empty variable to hold the search
   var userFoodSearch = [];
@@ -137,29 +130,11 @@ $("#searchBtn").on("click", function(event) {
 function displayYouTubeVideo() {
   //This line will display the container holding the button and embedded youTube video
   $(".how-to-video").show();
-
-  //This line will change the text of the button to what the user searches for
-  // $("#cookButton").text("How to make " + userInput + " video!"); Commented out by Grayson
-  //This line displays recipe container
-  //hibah $("#recipeList").show();
 }
 
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //-------------------------------- Recipes ---------------------------------------//
-//NEEDS TO BE DELETED
-//need to add  $("#recipeList").hide(); in line 12
-// $("#openingBtn").on("click", function () {
-//   //This line will show the recipelist div from html
-//   $("#recipeList").show();
-// });
-
-// $("#openingBtn").on("click", function () {
-//   //This line will show the recipelist div from html
-//   $("#recipeList").show();
-// });
-
-//START - DO NOT REMOVE PLEASE -- HIbah
 
 var optionSelected = [];
 
@@ -171,22 +146,13 @@ function displayRecipe() {
   //var dish = "chicken";
   var calorieMAX = $("#calorie-input").val();
 
-  //console.log($("#healthLabels").val());
-  //creating the array with health option
   var optionSelected = $("#healthLabels").val();
-  //console.log(optionSelected);
   var parameter = "";
 
   for (a = 0; a < optionSelected.length; a++) {
     parameter += "&health=" + optionSelected[a];
     console.log("inside loop for health parameter :" + parameter);
   }
-  // console.log("Labels" + $("#healthLabels option:selected").text());
-  // userFoodSearch.push(userInput);
-
-  // healthLabels.push($("#healthLabels").val());
-  //console.log("array :" + healthLabel);
-  // console.log("calories:" + calorieMAX);
   var queryURL =
     "https://api.edamam.com/search?q=" +
     dish +
@@ -202,11 +168,8 @@ function displayRecipe() {
   }).then(function(response) {
     console.log(response);
     console.log(queryURL);
-    // storing the data from the AJAX request in the results variable
+
     var results = response.hits;
-    // console.log("hits: image : " + results[0].recipe.image);
-    // console.log("hits: URL: " + results[0].recipe.url);
-    // console.log("hits: serach name : " + response.q);
 
     for (var i = 0; i < results.length; i++) {
       var foodResult = $("<div>");
@@ -218,10 +181,9 @@ function displayRecipe() {
       var foodImage = $("<img>").attr("src", results[i].recipe.image);
 
       $("#foodImage").append(foodImage);
-      //append title to h2
+
       $(".recipeName").text(results[i].recipe.label);
-      //for each info need to add title
-      // foodResult.append("<p id=label><span class='title'>Recipe Name: </span> <br>" + results[i].recipe.label + "</p>");
+
       var recipeURL = results[i].recipe.url;
       var ingredients = $(".ingredients");
       ingredients.append(
@@ -261,31 +223,6 @@ function displayRecipe() {
       $("#facts").append(foodResult);
       console.log(foodResult);
 
-      //DO NOT REMOVE
-
-      // Commented out table format
-      // var foodResult = $("<div>");
-      // $(foodResult).attr("data-dish", response.q);
-      // var foodImage = $("<img>").attr("src", results[i].recipe.image);
-      // var caloriePerServing = 0;
-      // var kCal = results[i].recipe.calories;
-      // var serving = results[i].recipe.yield;
-      // var row = $("<tr>");
-      // row.append(foodImage);
-      // row.append("<td>" + results[i].recipe.label + "</td>");
-      // row.append("<td>" + results[i].recipe.url + "</td>");
-      // row.append("<td>" + Math.round(results[i].recipe.calories) + "</td>");
-      // row.append("<td>" + results[i].recipe.yield + "</td>")
-      // row.append("<ul id=groceryList" + i + "> </ul>");
-      // caloriePerServing = parseInt(kCal / serving);
-      // row.append("<td>" + caloriePerServing + "</td>");
-      // row.append("<ul id=healthTags" + i + "> </ul>");
-      // //row.append("<td width=100px;>" + results[i].recipe.ingredientLines + "</td>");
-      // $("#recipes").append(row);
-      //for loop for ingredients
-
-      // var ingr = results[i].recipe.ingredientLines.length;
-      // console.log("Testiiiiing :" + ingr);
       for (var j = 0; j < results[i].recipe.ingredientLines.length; j++) {
         var li = $("<li list-style-type:square>");
         li.text(results[i].recipe.ingredientLines[j]);
