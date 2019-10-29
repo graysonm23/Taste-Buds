@@ -62,9 +62,9 @@ $("#searchBtn").on("click", function(event) {
   //Calls restaurant API to display restaurants nearby
   dispRestaurant();
   //Calls function to hide restaurant display
-  hideRest();
+  // hideRest();
   //This line empties out the container hilding recipe url iframe (Emir add)
-  $("#urlWindowBox").empty();
+  // $("#urlWindowBox").empty();
   //shows the ID for the recipe list
   // hibah  $("#recipeList").show();
   //shows restaurant container
