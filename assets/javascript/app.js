@@ -41,7 +41,8 @@ $(openingBtn).on("click", function () {
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //This line hides the container holding the youtube video
-$("#howToContainer").hide();
+$(".how-to-video").hide();
+$("#recipeList").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
 $("#searchBtn").on("click", function (event) {
@@ -55,25 +56,13 @@ $("#searchBtn").on("click", function (event) {
   $(".row").addClass("fadeIn");
 
   //DO NOT REMOVE - HIBAH
-  $("#recipeList").show();
-  //DO NOT REMOVE - HIBAH
   resetRecipe();
   //Calls the recipe API to show the recipe list
   displayRecipe();
   //Calls restaurant API to display restaurants nearby
   dispRestaurant();
-  //Calls function to hide restaurant display
+  // Calls function to hide restaurant display
   // hideRest();
-  //shows the ID for the recipe list
-  $("#recipeList").show();
-  //shows restaurant container
-
-
-  // function pageStop(userInput) {
-  //   if (userInput === undefined) {
-  //     alert("Please make selection!")
-  //   }
-  // }
 
 
   //This line makes an empty variable to hold the search
@@ -87,8 +76,11 @@ $("#searchBtn").on("click", function (event) {
   userFoodSearch.push(userInput);
   //This line will empty the textbox so user doesn't need to delete contents after every submission
   $("#search-input").val("");
-  //This line will clear the container holding the youTube video when user searches for a new food item
+  //This line will clear the containers holding the display elements when user searches for a new food item
   $("#howToContainer").empty();
+  $("#collapseExamples").empty();
+  $('#search-input').empty();
+  $('#zip-input').empty();
   //This local variable holds the google api key used for requesting youtube data
   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
 
@@ -98,8 +90,6 @@ $("#searchBtn").on("click", function (event) {
   }
   //Graysons' input
 
-  //This line will call the displayYouTubeVideo function to display video searched
-  displayYouTubeVideo();
   //This local variable holds the queryUrl used from youTube along with search parameters
   var youTubeUrl =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=how+to+make+" +
@@ -135,24 +125,19 @@ $("#searchBtn").on("click", function (event) {
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
   });
+  //This line will call the displayYouTubeVideo function to display video searched
+  displayYouTubeVideo();
 });
 
 //This function will display the youTube video
 function displayYouTubeVideo() {
   //This line will display the container holding the button and embedded youTube video
-  $("#howToContainer").show();
-
-  //Show restaurants nearby container
-  $("#restaurantContainer").show();
-  //Changes text on button
-  $("#restaurantButton").text(
-    "Restaurants nearby that serve " + userInput + "!"
-  );
+  $(".how-to-video").show();
 
   //This line will change the text of the button to what the user searches for
   // $("#cookButton").text("How to make " + userInput + " video!"); Commented out by Grayson
   //This line displays recipe container
-  $("#recipeList").show();
+  //hibah $("#recipeList").show();
 }
 
 //--------------------------------How-To Video (Emir)------------------------------------//
@@ -311,7 +296,6 @@ function displayRecipe() {
 }
 
 function resetRecipe() {
-  $("#recipes").empty();
   $("#foodImage").empty();
   $("#facts").empty();
   optionSelected = [];
@@ -322,18 +306,20 @@ function resetRecipe() {
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
 
-
+$(".restaurantContainer").hide();
 
 function dispRestaurant() {
 
-  event.preventDefault()
-  userSearch();
   var foodChoice = $("#search-input")
     .val()
     .toLowerCase()
     .trim();
+
+  //takes spaces out of user input to insert as query
   var foodChoiceNoSpace = foodChoice.replace(/\s/g, "");
+
   userLocation = $("#zip-input").val();
+
   var placesUrl =
     "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" +
     foodChoiceNoSpace +
@@ -341,10 +327,12 @@ function dispRestaurant() {
     userLocation +
     "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
-  $('#restaurantContainer').hide();
+  //If user doesnt input anything, function won't run
+  if (foodChoice === "") {
+    return false;
+  }
 
 
-  $("#collapseExamples").empty();
   $.ajax({
     url: placesUrl,
     method: "GET"
@@ -353,7 +341,10 @@ function dispRestaurant() {
     console.log(resourceResponse);
 
     for (var i = 0; i < resourceResponse.length; i++) {
+
+      //div containing restaurant info
       var restData = $("<div id='restaurant'>");
+
       var restName = resourceResponse[i].name;
       var restAddy = resourceResponse[i].Address.formattedAddress;
       var restPhone = resourceResponse[i].PhoneNumber;
@@ -366,64 +357,38 @@ function dispRestaurant() {
         " | Phone: " +
         restPhone
       );
+
+      //additional class for styling purposes
       pOne.addClass("card card-body");
 
+      //appending data to restaurant div
       restData.append(pOne);
+
       $("#collapseExamples").append(restData);
-      $("#restaurantContainer").show();
+      $(".restaurantContainer").show();
 
     }
 
     // food choice selected has no nearby restaurants serving it
     if (resourceResponse.length === 0) {
-      $("#restaurantButton").text(
+      $("#collapseExamples").text(
         "NO restaurants nearby serve " + userInput + "! Check out the recipe and/or 'How to...' section for tips on making it!"
-      );
+      ).css({
+        "text-align": "center",
+        "color": "white"
+
+      });
+      $(".restaurantContainer").show();
     }
 
+    // if user hasn't inputed a zip code
+    if (userLocation === "") {
+      $("#collapseExamples").text(
+        "Please enter a zip code for places nearby that serve " + userInput + "!"
+      );
+    }
   });
 
-  // if user doesn't input location
-  $("#restaurantContainer").hide();
 
 }
-
-function userSearch() {
-
-  var userLocale = $("#zip-input").val();
-
-  if (userLocale === "" || userLocale === undefined || userLocale === null) {
-    $("#restaurantContainer").hide();
-  }
-  // if user doesn't make a food choice
-  var foodPick = $("#search-input")
-    .val()
-    .toLowerCase()
-    .trim();
-
-  if (foodPick === "" || foodPick === undefined || foodPick === null) {
-    $("#restaurantContainer").hide();
-  }
-
-}
-
-// function hideRest() {
-//   // user doesn't input zip code
-//   if (userLocation === "" || userLocation === undefined || userLocation === null) {
-//     $("#restaurantContainer").hide();
-//   }
-
-//   var foodInput = $("#search-input")
-//     .val()
-//     .toLowerCase()
-//     .trim();
-
-//   // user doesn't input zip code
-//   if (foodInput === "" || foodInput === undefined || foodInput === null) {
-//     $("#restaurantContainer").hide();
-//   }
-//   console.log(userLocation)
-//   // dispRestaurant();
-// }
-
 //-------------------------------- Restaurant ------------------------------------//
