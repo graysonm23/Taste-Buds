@@ -383,7 +383,7 @@ textarea:focus {
   height: 100px;
 }
 
-.col-sm-6 {
+.col-sm-12 {
   max-height: 600px;
   overflow: auto;
 }
@@ -394,3 +394,6 @@ textarea:focus {
   color: white;
 }
 /* <!------------------------------------ Restaurant Info -----------------------------------> */
+
+@media screen and (max-width: 576px) {
+}
