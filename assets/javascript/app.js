@@ -80,8 +80,11 @@ $("#searchBtn").on("click", function (event) {
   userFoodSearch.push(userInput);
   //This line will empty the textbox so user doesn't need to delete contents after every submission
   $("#search-input").val("");
-  //This line will clear the container holding the youTube video when user searches for a new food item
+  //This line will clear the containers holding the display elements when user searches for a new food item
   $("#howToContainer").empty();
+  $("#collapseExamples").empty();
+  $('#search-input').empty();
+  $('#zip-input').empty();
   //This local variable holds the google api key used for requesting youtube data
   var googleApi = "AIzaSyA3LJNRXIx7_MkgahxD09FjInN0RrGgsiU";
 
@@ -134,13 +137,6 @@ $("#searchBtn").on("click", function (event) {
 function displayYouTubeVideo() {
   //This line will display the container holding the button and embedded youTube video
   $(".how-to-video").show();
-
-  //Show restaurants nearby container
-  $("#collapseExamples").show();
-  //Changes text on button
-  $("#restaurantButton").text(
-    "Restaurants nearby that serve " + userInput + "!"
-  );
 
   //This line will change the text of the button to what the user searches for
   // $("#cookButton").text("How to make " + userInput + " video!"); Commented out by Grayson
@@ -320,12 +316,17 @@ function resetRecipe() {
 $(".restaurantContainer").hide();
 
 function dispRestaurant() {
+
   var foodChoice = $("#search-input")
     .val()
     .toLowerCase()
     .trim();
+
+  //takes spaces out of user input to insert as query
   var foodChoiceNoSpace = foodChoice.replace(/\s/g, "");
+
   userLocation = $("#zip-input").val();
+
   var placesUrl =
     "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=" +
     foodChoiceNoSpace +
@@ -333,9 +334,13 @@ function dispRestaurant() {
     userLocation +
     "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
-  // $(".restaurantContainer").show();
+  //If user doesnt input anything, container won't display and function won't run
+  if (foodChoice === "") {
+    $('.restaurantContainer').hide()
+    return false;
+  }
 
-  $("#collapseExamples").empty();
+
   $.ajax({
     url: placesUrl,
     method: "GET"
@@ -344,7 +349,10 @@ function dispRestaurant() {
     console.log(resourceResponse);
 
     for (var i = 0; i < resourceResponse.length; i++) {
+
+      //div containing restaurant info
       var restData = $("<div id='restaurant'>");
+
       var restName = resourceResponse[i].name;
       var restAddy = resourceResponse[i].Address.formattedAddress;
       var restPhone = resourceResponse[i].PhoneNumber;
@@ -357,27 +365,38 @@ function dispRestaurant() {
         " | Phone: " +
         restPhone
       );
+
+      //additional class for styling purposes
       pOne.addClass("card card-body");
 
+      //appending data to restaurant div
       restData.append(pOne);
+
       $("#collapseExamples").append(restData);
+      $(".restaurantContainer").show();
+
     }
 
     // food choice selected has no nearby restaurants serving it
     if (resourceResponse.length === 0) {
-      $("#restaurantButton").text(
-        "NO restaurants nearby serve " + userInput + "!"
+      $("#collapseExamples").text(
+        "NO restaurants nearby serve " + userInput + "! Check out the recipe and/or 'How to...' section for tips on making it!"
+      ).css({
+        "text-align": "center",
+        "color": "white"
+
+      });
+      $(".restaurantContainer").show();
+    }
+
+    // if user hasn't inputed a zip code
+    if (userLocation === "") {
+      $("#collapseExamples").text(
+        "Please enter a zip code for places nearby that serve " + userInput + "!"
       );
     }
-    $(".restaurantContainer").show();
   });
-}
 
-function hideRest() {
-  // user doesn't input zip code
-  if (userLocation === "") {
-    $("#collapseExamples").hide();
-  }
-}
 
+}
 //-------------------------------- Restaurant ------------------------------------//
