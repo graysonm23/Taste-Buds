@@ -314,6 +314,10 @@ textarea:focus {
   min-height: 100%;
 }
 
+#foodImage img {
+  border-radius: 10%;
+}
+
 .image-container p {
   color: white;
 }
