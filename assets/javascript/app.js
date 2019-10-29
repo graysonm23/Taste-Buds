@@ -173,14 +173,14 @@ function displayRecipe() {
 
   //console.log($("#healthLabels").val());
   //creating the array with health option
-  var optionSelected = $("#healthLabels").val();
+  // var optionSelected = $("#healthLabels").val();
   //console.log(optionSelected);
   var parameter = "";
 
-  for (a = 0; a < optionSelected.length; a++) {
-    parameter += "&health=" + optionSelected[a];
-    console.log("inside loop for health parameter :" + parameter);
-  }
+  // for (a = 0; a < optionSelected.length; a++) {
+  //   parameter += "&health=" + optionSelected[a];
+  //   console.log("inside loop for health parameter :" + parameter);
+  // }
   // console.log("Labels" + $("#healthLabels option:selected").text());
   // userFoodSearch.push(userInput);
 
