@@ -247,14 +247,6 @@ textarea:focus {
   max-height: 500px;
   background-color: transparent;
   background-color: transparent;
-  /* animation-name: angry-animation;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  transition: 1s;
-  animation-fill-mode: forwards; */
   padding: 0;
   min-height: 100%;
   opacity: 3;
@@ -280,7 +272,6 @@ textarea:focus {
 /*--------------------------------- How-To Video ----------------------------------*/
 /*--------------------------------- Recipe List  ----------------------------------*/
 
-/* Commented it out to test if I can see the recipe results - Hibah */
 #recipeList {
   font-size: 21px;
   position: relative;
