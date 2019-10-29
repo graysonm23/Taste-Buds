@@ -327,8 +327,9 @@ function dispRestaurant() {
     userLocation +
     "&key=ArgtXj8XxrDspnoBAO0ycDFaaCLYYOSjQVk9y02v7TL_FRTyN8bLYzGhVmco4NzV";
 
-  //If user doesnt input anything, function won't run
+  //If user doesnt input anything, container won't display and function won't run
   if (foodChoice === "") {
+    $('.restaurantContainer').hide()
     return false;
   }
 
