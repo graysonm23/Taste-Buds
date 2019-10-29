@@ -63,6 +63,8 @@ $("#searchBtn").on("click", function (event) {
   dispRestaurant();
   //Calls function to hide restaurant display
   hideRest();
+  //This line empties out the container hilding recipe url iframe (Emir add)
+  $("#urlWindowBox").empty();
   //shows the ID for the recipe list
   // hibah  $("#recipeList").show();
   //shows restaurant container
@@ -225,12 +227,15 @@ function displayRecipe() {
       //for each info need to add title
       // foodResult.append("<p id=label><span class='title'>Recipe Name: </span> <br>" + results[i].recipe.label + "</p>");
       var recipeURL = results[i].recipe.url;
-      foodResult.append(
-        "<a href=" +
-        recipeURL +
-        " target='_blank' id='recipeLink'> " +
-        "Link to the Recipe" +
-        "</a > "
+      //This line makes a variable that holds the iframe to display the recipe URL, adds a class for CSS custom styling (Emir add)
+      var recipeUrlContainer = $("<iframe>").attr("src", recipeURL).addClass("recipeUrlWindow")
+      //This line places the recipeUrlContainer inside the html div that will display the iframe (Emir add)
+      $("#urlWindowBox").append(recipeUrlContainer
+        // "<a href=" +
+        // recipeURL +
+        // " target='_blank' id='recipeLink'> " +
+        // "Link to the Recipe" +
+        // "</a > "
       );
       console.log("<a href=" + recipeURL + ">");
       foodResult.append(
