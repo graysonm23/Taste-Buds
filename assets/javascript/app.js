@@ -1,10 +1,10 @@
 //----------------------------Loading Animation-----------------------------------//
 $(".lds-hourglass").hide();
 $(document).on({
-  ajaxStart: function () {
+  ajaxStart: function() {
     $(".lds-hourglass").show();
   },
-  ajaxStop: function () {
+  ajaxStop: function() {
     $(".lds-hourglass").hide();
   }
 });
@@ -14,7 +14,7 @@ $(document).on({
 let openingPage = $("#openingPage");
 let openingBtn = $("#openingBtn");
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(openingPage).hide();
   // $(openingPage).addClass("fadeOut");
   $(openingBtn).attr("disabled", "disabled");
@@ -30,7 +30,7 @@ $(searchBtn).hide();
 $(searchPage).hide();
 $(searchItems).hide();
 
-$(openingBtn).on("click", function () {
+$(openingBtn).on("click", function() {
   $(searchPage).show();
   $(searchBtn).show();
   $(searchItems).show();
@@ -45,7 +45,7 @@ $(".how-to-video").hide();
 $("#recipeList").hide();
 
 //This on click event handler will call the youtube api for the video with highest rating after the user hits search button
-$("#searchBtn").on("click", function (event) {
+$("#searchBtn").on("click", function(event) {
   //This line prevents the user from trying to submit the form, user can hit enter on keyboard or click button
   event.preventDefault();
 
@@ -95,7 +95,7 @@ $("#searchBtn").on("click", function (event) {
   $.ajax({
     url: youTubeUrl,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     //This line makes a variable to place the iframe div inside (this holds the youtube video)
     youTubeVideo = $("<div>");
@@ -119,8 +119,8 @@ $("#searchBtn").on("click", function (event) {
       );
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
-  }); dispRestaurant();
-
+  });
+  dispRestaurant();
 
   //This line will call the displayYouTubeVideo function to display video searched
   displayYouTubeVideo();
@@ -135,7 +135,7 @@ function displayYouTubeVideo() {
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //-------------------------------- Recipes ---------------------------------------//
-//tracks the checked dietray options 
+//tracks the checked dietray options
 var optionSelected = [];
 
 function displayRecipe() {
@@ -148,13 +148,12 @@ function displayRecipe() {
   var parameter = "";
 
   //Stores the value of the checlist and pushes it in an array
-  $('.form-check input:checked').each(function () {
+  $(".form-check input:checked").each(function() {
     var checkVal = $(this).val();
     console.log("checked" + checkVal);
     optionSelected.push(checkVal);
     console.log(optionSelected);
   });
-
 
   for (a = 0; a < optionSelected.length; a++) {
     parameter += "&health=" + optionSelected[a];
@@ -171,7 +170,7 @@ function displayRecipe() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     console.log(queryURL);
 
@@ -194,37 +193,37 @@ function displayRecipe() {
       var ingredients = $(".ingredients");
       ingredients.append(
         "<a href=" +
-        recipeURL +
-        " target='_blank' id='recipeLink'> " +
-        "Link to the Recipe" +
-        "</a > "
+          recipeURL +
+          " target='_blank' id='recipeLink'> " +
+          "Link to the Recipe" +
+          "</a > "
       );
       console.log("<a href=" + recipeURL + ">");
       ingredients.append(
         "<p id=caloriesForDish><span class='title'>Total Calories</span> <br>" +
-        Math.round(results[i].recipe.calories) +
-        "</p>"
+          Math.round(results[i].recipe.calories) +
+          "</p>"
       );
       ingredients.append(
         "<p id=serving><span class='title'>Serving Size</span> <br>" +
-        results[i].recipe.yield +
-        "</p>"
+          results[i].recipe.yield +
+          "</p>"
       );
       foodResult.append(
         "<ol id=groceryList" +
-        i +
-        "><span class='title'>Ingredients</span> <br> </ol>"
+          i +
+          "><span class='title'>Ingredients</span> <br> </ol>"
       );
       caloriePerServing = parseInt(kCal / serving);
       foodResult.append(
         "<p id=calories><span class='title'>Calories Per Serving</span> <br>" +
-        caloriePerServing +
-        "<p>"
+          caloriePerServing +
+          "<p>"
       );
       foodResult.append(
         "<ul id=healthTags" +
-        i +
-        "><span class='title'>Health Labels</span> <br> </ul>"
+          i +
+          "><span class='title'>Health Labels</span> <br> </ul>"
       );
       $("#facts").append(foodResult);
       console.log(foodResult);
@@ -284,7 +283,7 @@ function dispRestaurant() {
   $.ajax({
     url: placesUrl,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     var resourceResponse = response.resourceSets[0].resources;
     console.log(resourceResponse);
 
@@ -298,11 +297,11 @@ function dispRestaurant() {
 
       var pOne = $("<p class='text-center'>").text(
         " Restaurant Name: " +
-        restName +
-        " | Address: " +
-        restAddy +
-        " | Phone: " +
-        restPhone
+          restName +
+          " | Address: " +
+          restAddy +
+          " | Phone: " +
+          restPhone
       );
 
       //additional class for styling purposes
@@ -320,8 +319,8 @@ function dispRestaurant() {
       $("#collapseExamples")
         .text(
           "NO restaurants nearby serve " +
-          userInput +
-          "! Check out the recipe and/or 'How to...' section for tips on making it!"
+            userInput +
+            "! Check out the recipe and/or 'How to...' section for tips on making it!"
         )
         .css({
           "text-align": "center",
@@ -334,8 +333,8 @@ function dispRestaurant() {
     if (userLocation === "") {
       $("#collapseExamples").text(
         "Please enter a zip code for places nearby that serve " +
-        userInput +
-        "!"
+          userInput +
+          "!"
       );
     }
     $(".restaurantContainer").show();
