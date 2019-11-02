@@ -60,6 +60,7 @@ $("#searchBtn").on("click", function(event) {
   //Calls the recipe API to show the recipe list
   displayRecipe();
   //Calls restaurant API to display restaurants nearby
+  dispRestaurant();
   //  //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
@@ -249,7 +250,6 @@ function resetRecipe() {
   optionSelected = [];
 }
 
-//END - DO NOT REMOVE PLEASE -- Hibah
 //-------------------------------- Recipes ------------------------------------//
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000
