@@ -61,8 +61,7 @@ $("#searchBtn").on("click", function(event) {
   displayRecipe();
   //Calls restaurant API to display restaurants nearby
   dispRestaurant();
-
-  //This line makes an empty variable to hold the search
+  //  //This line makes an empty variable to hold the search
   var userFoodSearch = [];
   //This line will take the value from the textbox, make it lower case, trim spaces, and place inside userInput global variable
   userInput = $("#search-input")
@@ -122,6 +121,8 @@ $("#searchBtn").on("click", function(event) {
     //This line will place the video inside the youTubeVideo container that holds the iframe
     youTubeVideo.append(cookVideoContainer);
   });
+  dispRestaurant();
+
   //This line will call the displayYouTubeVideo function to display video searched
   displayYouTubeVideo();
 });
@@ -135,7 +136,7 @@ function displayYouTubeVideo() {
 //--------------------------------How-To Video (Emir)------------------------------------//
 
 //-------------------------------- Recipes ---------------------------------------//
-
+//tracks the checked dietray options
 var optionSelected = [];
 
 function displayRecipe() {
@@ -143,11 +144,17 @@ function displayRecipe() {
   var dish = $("#search-input")
     .val()
     .trim();
-  //var dish = "chicken";
   var calorieMAX = $("#calorie-input").val();
 
-  var optionSelected = $("#healthLabels").val();
   var parameter = "";
+
+  //Stores the value of the checlist and pushes it in an array
+  $(".form-check input:checked").each(function() {
+    var checkVal = $(this).val();
+    console.log("checked" + checkVal);
+    optionSelected.push(checkVal);
+    console.log(optionSelected);
+  });
 
   for (a = 0; a < optionSelected.length; a++) {
     parameter += "&health=" + optionSelected[a];
@@ -160,8 +167,7 @@ function displayRecipe() {
     calorieMAX +
     parameter +
     "";
-  // var queryURL =
-  //   "https://api.edamam.com/search?q=chicken&app_id=$385e5d34&app_key=$bf43fe764b8aae11e37d5dc0f21c1e2c&from=0&to=5&calories=0-1000&" + parameter + "";
+
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -244,7 +250,6 @@ function resetRecipe() {
   optionSelected = [];
 }
 
-//END - DO NOT REMOVE PLEASE -- Hibah
 //-------------------------------- Recipes ------------------------------------//
 
 //-------------------------------- Restaurant ------------------------------------// 32.776700, -96.797000

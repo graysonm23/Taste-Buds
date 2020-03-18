@@ -1,0 +1,23 @@
+{
+  "name": "taste-buds",
+  "version": "1.0.0",
+  "description": "- Live link to App: https://graysonm23.github.io/Taste-Buds/",
+  "main": "index.js",
+  "dependencies": {
+    "scrollreveal": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graysonm23/Taste-Buds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/graysonm23/Taste-Buds/issues"
+  },
+  "homepage": "https://github.com/graysonm23/Taste-Buds#readme"
+}
